@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tech Hub | Cesar's Technology Headquarters</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --bg: #0f0f23;
+            --bg-light: #1a1a2e;
+            --bg-lighter: #252547;
+            --text: #e2e8f0;
+            --text-light: #94a3b8;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --patch: #8bc34a;
+            --neo: #9c27b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg) 0%, #050517 100%);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .code-font {
+            font-family: 'Source Code Pro', monospace;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(15, 15, 35, 0.9) 0%, rgba(5, 5, 23, 0.9) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--text-light);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-button {
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .hero-button.primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .hero-button.secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--primary);
+        }
+
+        .hero-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Models Overview */
+        .models-overview {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .model-card {
+            background: var(--bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+
+        .model-header {
+            padding: 25px 25px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .model-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .patch .model-icon {
+            background: linear-gradient(135deg, var(--patch), #306824);
+        }
+
+        .neo .model-icon {
+            background: linear-gradient(135deg, var(--neo), #6a1b9a);
+        }
+
+        .future .model-icon {
+            background: linear-gradient(135deg, var(--accent), #7c3aed);
+        }
+
+        .model-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+
+        .model-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .model-body {
+            padding: 20px 25px;
+            flex-grow: 1;
+        }
+
+        .model-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .model-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .model-features li i {
+            color: var(--success);
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .model-footer {
+            padding: 15px 25px 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .model-link {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .patch .model-link {
+            background: rgba(139, 195, 74, 0.1);
+            color: var(--patch);
+            border: 1px solid rgba(139, 195, 74, 0.3);
+        }
+
+        .patch .model-link:hover {
+            background: var(--patch);
+            color: white;
+        }
+
+        .neo .model-link {
+            background: rgba(156, 39, 176, 0.1);
+            color: var(--neo);
+            border: 1px solid rgba(156, 39, 176, 0.3);
+        }
+
+        .neo .model-link:hover {
+            background: var(--neo);
+            color: white;
+        }
+
+        .future .model-link {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .future .model-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Individual Model Sections */
+        .model-section {
+            padding: 100px 0;
+        }
+
+        .patch-section {
+            background: var(--bg);
+        }
+
+        .neo-section {
+            background: var(--bg-light);
+        }
+
+        .model-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .model-detail.reverse {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .model-detail.reverse .model-content {
+            order: 2;
+        }
+
+        .model-detail.reverse .model-visual {
+            order: 1;
+        }
+
+        .model-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .model-content h2 .accent {
+            background: linear-gradient(135deg, var(--patch), #306824);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .neo-section .model-content h2 .accent {
+            background: linear-gradient(135deg, var(--neo), #6a1b9a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .model-content p {
+            margin-bottom: 25px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .model-features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+
+        .patch-section .feature-icon {
+            background: rgba(139, 195, 74, 0.1);
+            color: var(--patch);
+        }
+
+        .neo-section .feature-icon {
+            background: rgba(156, 39, 176, 0.1);
+            color: var(--neo);
+        }
+
+        .feature-text h4 {
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+
+        .feature-text p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            color: var(--text-light);
+        }
+
+        .model-visual {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .model-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .placeholder-visual {
+            height: 400px;
+            background: var(--bg-lighter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        /* Future Models Section */
+        .future-models {
+            padding: 100px 0;
+            background: var(--bg);
+            text-align: center;
+        }
+
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .future-card {
+            background: var(--bg-light);
+            padding: 40px 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .future-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .future-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .future-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .future-card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            padding: 6px 15px;
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a1a;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .model-detail, .model-detail.reverse {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .model-detail.reverse .model-content,
+            .model-detail.reverse .model-visual {
+                order: initial;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-button {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .models-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .model-features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .future-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation for terminal text */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: var(--primary);
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+
+        /* Matrix-style effect */
+        @keyframes matrixRain {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.03;
+        }
+
+        .matrix-char {
+            position: absolute;
+            color: var(--success);
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            animation: matrixRain 5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix Rain Effect -->
+    <div class="matrix-rain" id="matrixRain"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div>AI Tech Hub</div>
+                </a>
+
+                <nav class="nav">
+                    <div class="nav-links">
+                        <a href="#overview">Models</a>
+                        <a href="#patch">PATCH</a>
+                        <a href="#neo">NEO</a>
+                        <a href="#future">Future</a>
+                        <a href="#about">About</a>
+                    </div>
+                </nav>
+
+                <a href="#contact" class="cta-button">Get In Touch</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Cesar's AI Technology Hub</h1>
+            <p>A centralized platform showcasing cutting-edge AI tools, frameworks, and implementations. Explore the future of personal AI assistants and development tools.</p>
+            <div class="hero-buttons">
+                <a href="#overview" class="hero-button primary">Explore Models</a>
+                <a href="#future" class="hero-button secondary">Future Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Models Overview -->
+    <section class="models-overview" id="overview">
+        <div class="container">
+            <div class="section-title">
+                <h2>AI Models & Tools</h2>
+                <p>Discover the collection of AI implementations, each designed for specific use cases and optimized for performance.</p>
+            </div>
+
+            <div class="models-grid">
+                <div class="model-card patch">
+                    <div class="model-header">
+                        <div class="model-icon">
+                            <i class="fas fa-feather"></i>
+                        </div>
+                        <div class="model-info">
+                            <h3>PATCH AI Console</h3>
+                            <p>Lightweight & Efficient</p>
+                        </div>
+                    </div>
+                    <div class="model-body">
+                        <ul class="model-features">
+                            <li><i class="fas fa-check"></i> Minimal resource consumption</li>
+                            <li><i class="fas fa-check"></i> Fast response times</li>
+                            <li><i class="fas fa-check"></i> Cross-platform compatibility</li>
+                            <li><i class="fas fa-check"></i> Easy setup and deployment</li>
+                        </ul>
+                        <p>Perfect for everyday AI tasks and quick interactions without heavy system requirements.</p>
+                    </div>
+                    <div class="model-footer">
+                        <a href="#patch" class="model-link">Explore PATCH</a>
+                    </div>
+                </div>
+
+                <div class="model-card neo">
+                    <div class="model-header">
+                        <div class="model-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="model-info">
+                            <h3>NEO AI Console</h3>
+                            <p>Advanced & Sophisticated</p>
+                        </div>
+                    </div>
+                    <div class="model-body">
+                        <ul class="model-features">
+                            <li><i class="fas fa-check"></i> Multi-model orchestration</li>
+                            <li><i class="fas fa-check"></i> Persistent memory system</li>
+                            <li><i class="fas fa-check"></i> Context-aware routing</li>
+                            <li><i class="fas fa-check"></i> Continuous learning</li>
+                        </ul>
+                        <p>Advanced AI console with sophisticated capabilities for complex tasks and personalized interactions.</p>
+                    </div>
+                    <div class="model-footer">
+                        <a href="#neo" class="model-link">Explore NEO</a>
+                    </div>
+                </div>
+
+                <div class="model-card future">
+                    <div class="model-header">
+                        <div class="model-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="model-info">
+                            <h3>Future Models</h3>
+                            <p>Coming Soon</p>
+                        </div>
+                    </div>
+                    <div class="model-body">
+                        <ul class="model-features">
+                            <li><i class="fas fa-star"></i> Specialized domain models</li>
+                            <li><i class="fas fa-star"></i> Enhanced reasoning systems</li>
+                            <li><i class="fas fa-star"></i> Multi-modal capabilities</li>
+                            <li><i class="fas fa-star"></i> Enterprise solutions</li>
+                        </ul>
+                        <p>Ongoing development of next-generation AI tools and implementations for various applications.</p>
+                    </div>
+                    <div class="model-footer">
+                        <a href="#future" class="model-link">View Roadmap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PATCH Section -->
+    <section class="model-section patch-section" id="patch">
+        <div class="container">
+            <div class="model-detail">
+                <div class="model-content">
+                    <h2><span class="accent">PATCH</span> AI Console</h2>
+                    <p>A lightweight, efficient AI console designed for developers and power users who need fast, responsive AI interactions without heavy resource requirements.</p>
+                    
+                    <div class="model-features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Lightning Fast</h4>
+                                <p>Optimized for minimal resource consumption with rapid response times.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Cross-Platform</h4>
+                                <p>Runs seamlessly on Windows, macOS, and Linux environments.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Privacy Focused</h4>
+                                <p>All processing happens locally - your data never leaves your machine.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Developer Friendly</h4>
+                                <p>Simple setup with clear documentation and easy customization.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="cta-button">Try PATCH Demo</a>
+                </div>
+                
+                <div class="model-visual">
+                    <div class="placeholder-visual">
+                        <i class="fas fa-terminal" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <div>PATCH Console Interface</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEO Section -->
+    <section class="model-section neo-section" id="neo">
+        <div class="container">
+            <div class="model-detail reverse">
+                <div class="model-content">
+                    <h2><span class="accent">NEO</span> AI Console</h2>
+                    <p>An advanced personal AI console with persistent memory, multi-model orchestration, and sophisticated reflection systems for complex AI interactions.</p>
+                    
+                    <div class="model-features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Multi-Model Orchestration</h4>
+                                <p>Intelligently routes tasks between specialized AI models based on context.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-memory"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Persistent Memory</h4>
+                                <p>Maintains comprehensive session memory with categorized storage.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Context-Aware Routing</h4>
+                                <p>Automatically selects optimal AI model based on task requirements.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-sync"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Continuous Learning</h4>
+                                <p>Implements reflection mechanisms to improve responses over time.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="cta-button">Try NEO Demo</a>
+                </div>
+                
+                <div class="model-visual">
+                    <div class="placeholder-visual">
+                        <i class="fas fa-robot" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <div>NEO Console Interface</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Models Section -->
+    <section class="future-models" id="future">
+        <div class="container">
+            <div class="section-title">
+                <h2>Future Projects & Roadmap</h2>
+                <p>Explore the upcoming AI tools and implementations currently in development.</p>
+            </div>
+
+            <div class="future-grid">
+                <div class="future-card">
+                    <div class="future-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Analytics Pro</h3>
+                    <p>Advanced AI-powered analytics platform with predictive modeling and data visualization capabilities.</p>
+                    <span class="coming-soon">Q4 2025</span>
+                </div>
+
+                <div class="future-card">
+                    <div class="future-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Polyglot AI</h3>
+                    <p>Multi-language AI assistant with real-time translation and cultural context understanding.</p>
+                    <span class="coming-soon">Q1 2026</span>
+                </div>
+
+                <div class="future-card">
+                    <div class="future-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Vision AI Studio</h3>
+                    <p>Computer vision platform for image and video analysis with creative AI capabilities.</p>
+                    <span class="coming-soon">Q2 2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>AI Tech Hub</h3>
+                    <p>A centralized platform for Cesar's AI technology projects and implementations.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Models</h3>
+                    <ul class="footer-links">
+                        <li><a href="#patch">PATCH AI Console</a></li>
+                        <li><a href="#neo">NEO AI Console</a></li>
+                        <li><a href="#future">Future Projects</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">GitHub Repository</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Feedback</a></li>
+                        <li><a href="#">Contribute</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI Tech Hub. Created with ❤️ by Cesar Reyes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const matrixRain = document.getElementById('matrixRain');
+            
+            // Create matrix rain effect
+            function createMatrixRain() {
+                const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+                const columns = Math.floor(window.innerWidth / 14);
+                
+                for (let i = 0; i < columns; i++) {
+                    const char = document.createElement('div');
+                    char.className = 'matrix-char';
+                    char.style.left = `${i * 14}px`;
+                    char.style.animationDelay = `${Math.random() * 5}s`;
+                    char.textContent = chars.charAt(Math.floor(Math.random() * chars.length));
+                    matrixRain.appendChild(char);
+                }
+            }
+            
+            createMatrixRain();
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(15, 15, 35, 0.98)';
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.background = 'rgba(15, 15, 35, 0.95)';
+                    header.style.boxShadow = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
