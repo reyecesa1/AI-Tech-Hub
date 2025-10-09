@@ -490,6 +490,131 @@
             font-size: 1.2rem;
         }
 
+        /* Terminal Demo Styles */
+        .terminal-demo {
+            background: #0a0e14;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .terminal-header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-button.close {
+            background: #ff5f57;
+        }
+
+        .terminal-button.minimize {
+            background: #ffbd2e;
+        }
+
+        .terminal-button.maximize {
+            background: #28ca42;
+        }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .terminal-body {
+            padding: 15px;
+            height: 250px;
+            overflow-y: auto;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.9rem;
+        }
+
+        .terminal-output {
+            margin-bottom: 10px;
+        }
+
+        .command-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .prompt {
+            color: var(--patch);
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        .neo-prompt {
+            color: #00ff41;
+        }
+
+        .command-input {
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            flex: 1;
+            outline: none;
+            font-family: 'Source Code Pro', monospace;
+        }
+
+        .output-line {
+            margin: 6px 0;
+            line-height: 1.4;
+        }
+
+        .output-line.system {
+            color: #4fc3f7;
+        }
+
+        .output-line.error {
+            color: #ef4444;
+        }
+
+        .output-line.success {
+            color: #10b981;
+        }
+
+        .output-line.matrix {
+            color: #00ff41;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 6px;
+            height: 14px;
+            background: var(--patch);
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+
+        .neo-cursor {
+            background: #00ff41;
+        }
+
         /* Future Models Section */
         .future-models {
             padding: 100px 0;
@@ -731,8 +856,8 @@
                 <nav class="nav">
                     <div class="nav-links">
                         <a href="#overview">Models</a>
-                        <a href="#patch">PATCH</a>
-                        <a href="#neo">NEO</a>
+                        <a href="https://patch-two.vercel.app" target="_blank">PATCH</a>
+                        <a href="https://neo-ashy-eight.vercel.app" target="_blank">NEO</a>
                         <a href="#future">Future</a>
                         <a href="#about">About</a>
                     </div>
@@ -784,7 +909,7 @@
                         <p>Perfect for everyday AI tasks and quick interactions without heavy system requirements.</p>
                     </div>
                     <div class="model-footer">
-                        <a href="#patch" class="model-link">Explore PATCH</a>
+                        <a href="https://patch-two.vercel.app" target="_blank" class="model-link">Visit PATCH Website</a>
                     </div>
                 </div>
 
@@ -808,7 +933,7 @@
                         <p>Advanced AI console with sophisticated capabilities for complex tasks and personalized interactions.</p>
                     </div>
                     <div class="model-footer">
-                        <a href="#neo" class="model-link">Explore NEO</a>
+                        <a href="https://neo-ashy-eight.vercel.app" target="_blank" class="model-link">Visit NEO Website</a>
                     </div>
                 </div>
 
@@ -889,13 +1014,33 @@
                         </div>
                     </div>
                     
-                    <a href="#" class="cta-button">Try PATCH Demo</a>
+                    <a href="https://patch-two.vercel.app" target="_blank" class="cta-button">Visit PATCH Website</a>
                 </div>
                 
                 <div class="model-visual">
-                    <div class="placeholder-visual">
-                        <i class="fas fa-terminal" style="font-size: 3rem; margin-bottom: 15px;"></i>
-                        <div>PATCH Console Interface</div>
+                    <div class="terminal-demo">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <div class="terminal-button close"></div>
+                                <div class="terminal-button minimize"></div>
+                                <div class="terminal-button maximize"></div>
+                            </div>
+                            <div class="terminal-title">patch-ai-console — bash — 80x24</div>
+                        </div>
+                        <div class="terminal-body" id="patchTerminalBody">
+                            <div class="terminal-output">
+                                <div class="output-line system">Patch AI Console v1.0.3</div>
+                                <div class="output-line system">Initializing systems...</div>
+                                <div class="output-line system">Memory module loaded</div>
+                                <div class="output-line system">Model registry active</div>
+                                <div class="output-line success">System ready. Type 'help' for available commands.</div>
+                            </div>
+                            <div class="command-line">
+                                <span class="prompt">user@patch:~$</span>
+                                <input type="text" class="command-input" id="patchCommandInput" autofocus>
+                                <span class="cursor"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -952,13 +1097,35 @@
                         </div>
                     </div>
                     
-                    <a href="#" class="cta-button">Try NEO Demo</a>
+                    <a href="https://neo-ashy-eight.vercel.app" target="_blank" class="cta-button">Visit NEO Website</a>
                 </div>
                 
                 <div class="model-visual">
-                    <div class="placeholder-visual">
-                        <i class="fas fa-robot" style="font-size: 3rem; margin-bottom: 15px;"></i>
-                        <div>NEO Console Interface</div>
+                    <div class="terminal-demo">
+                        <div class="terminal-header">
+                            <div class="terminal-buttons">
+                                <div class="terminal-button close"></div>
+                                <div class="terminal-button minimize"></div>
+                                <div class="terminal-button maximize"></div>
+                            </div>
+                            <div class="terminal-title">neo-ai-console — bash — 80x24</div>
+                        </div>
+                        <div class="terminal-body" id="neoTerminalBody">
+                            <div class="terminal-output">
+                                <div class="output-line matrix">NEO AI Console v2.1.0</div>
+                                <div class="output-line matrix">Initializing advanced systems...</div>
+                                <div class="output-line system">Loading persistent memory module</div>
+                                <div class="output-line system">Model orchestration system active</div>
+                                <div class="output-line system">Context-aware routing initialized</div>
+                                <div class="output-line system">Reflection and learning systems online</div>
+                                <div class="output-line success">System ready. Type 'help' for available commands.</div>
+                            </div>
+                            <div class="command-line">
+                                <span class="prompt neo-prompt">user@neo:~$</span>
+                                <input type="text" class="command-input" id="neoCommandInput" autofocus>
+                                <span class="cursor neo-cursor"></span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1022,8 +1189,8 @@
                 <div class="footer-column">
                     <h3>Models</h3>
                     <ul class="footer-links">
-                        <li><a href="#patch">PATCH AI Console</a></li>
-                        <li><a href="#neo">NEO AI Console</a></li>
+                        <li><a href="https://patch-two.vercel.app" target="_blank">PATCH AI Console</a></li>
+                        <li><a href="https://neo-ashy-eight.vercel.app" target="_blank">NEO AI Console</a></li>
                         <li><a href="#future">Future Projects</a></li>
                         <li><a href="#">Documentation</a></li>
                     </ul>
@@ -1105,6 +1272,268 @@
                     header.style.background = 'rgba(15, 15, 35, 0.95)';
                     header.style.boxShadow = 'none';
                 }
+            });
+
+            // PATCH Terminal Demo
+            const patchTerminalBody = document.getElementById('patchTerminalBody');
+            const patchCommandInput = document.getElementById('patchCommandInput');
+            
+            // Command history and responses for PATCH
+            const patchCommands = {
+                'help': `Available commands:
+  help - Show this help message
+  about - Information about Patch AI
+  models - List available AI models
+  memory - Show memory system info
+  clear - Clear the terminal
+  exit - Exit the console (in desktop version)`,
+                
+                'about': `Patch AI Console v1.0.3
+A lightweight, efficient AI console for developers.
+  
+Features:
+  - Multi-model AI support (TinyLlama, SmollM2, DeepSeek)
+  - Session memory with categorization
+  - Cross-platform compatibility
+  - Minimal resource consumption
+  - Privacy-focused local processing`,
+                
+                'models': `Available AI Models:
+  
+1. TinyLlama (default)
+   - Fast and lightweight
+   - Perfect for everyday tasks
+   - Low resource requirements
+  
+2. SmollM2
+   - Balanced performance
+   - Good for general purpose use
+   - Moderate resource usage
+  
+3. DeepSeek
+   - Advanced reasoning capabilities
+   - Best for complex tasks
+   - Higher resource requirements`,
+                
+                'memory': `Memory System:
+  
+Patch maintains conversation context with categorized memory:
+  
+  [MOOD] - Emotional state and preferences
+  [GOAL] - Current objectives and tasks
+  [NOTE] - Important information and facts
+  [FEEDBACK] - System performance notes
+  [REFLECTION] - Learning and improvement insights
+  
+Type 'memory view' to see current session memory.`,
+                
+                'memory view': `Current Session Memory:
+  
+[GOAL] Demonstrate Patch AI Console capabilities
+[NOTE] User is interacting with web demo version
+[REFLECTION] System responding well to command inputs`,
+                
+                'clear': '', // Special case - handled separately
+                
+                'exit': 'This is a web demo. In the desktop version, this would exit the console.',
+                
+                '': '' // Handle empty input
+            };
+            
+            // Default response for unknown commands
+            const patchDefaultResponse = "Command not recognized. Type 'help' for available commands.";
+            
+            // Function to add output to PATCH terminal
+            function addPatchOutput(text, className = '') {
+                const outputLine = document.createElement('div');
+                outputLine.className = `output-line ${className}`;
+                outputLine.textContent = text;
+                patchTerminalBody.insertBefore(outputLine, patchTerminalBody.lastElementChild);
+                patchTerminalBody.scrollTop = patchTerminalBody.scrollHeight;
+            }
+            
+            // Function to process PATCH commands
+            function processPatchCommand(command) {
+                // Show the command that was entered
+                addPatchOutput(`user@patch:~$ ${command}`);
+                
+                // Process special commands
+                if (command === 'clear') {
+                    // Clear terminal except the last command line
+                    const outputLines = patchTerminalBody.querySelectorAll('.output-line');
+                    outputLines.forEach(line => line.remove());
+                    return;
+                }
+                
+                // Get response or use default
+                const response = patchCommands[command.toLowerCase()] || patchDefaultResponse;
+                
+                // Add response to terminal
+                if (response) {
+                    // Split response by lines and add each separately
+                    response.split('\n').forEach(line => {
+                        addPatchOutput(line);
+                    });
+                }
+            }
+            
+            // Handle PATCH command input
+            patchCommandInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    const command = patchCommandInput.value.trim();
+                    if (command) {
+                        processPatchCommand(command);
+                    }
+                    patchCommandInput.value = '';
+                }
+            });
+            
+            // Focus on PATCH input when clicking anywhere in terminal
+            patchTerminalBody.addEventListener('click', function() {
+                patchCommandInput.focus();
+            });
+
+            // NEO Terminal Demo
+            const neoTerminalBody = document.getElementById('neoTerminalBody');
+            const neoCommandInput = document.getElementById('neoCommandInput');
+            
+            // Available commands and responses for NEO
+            const neoCommands = {
+                'help': `Available commands:
+  help - Show this help message
+  about - Information about NEO AI
+  models - List available AI models
+  memory - Show memory system info
+  status - Display system status
+  reflect - Show reflection insights
+  clear - Clear the terminal
+  exit - Exit the console (in desktop version)`,
+                
+                'about': `NEO AI Console v2.1.0
+An advanced personal AI console with sophisticated capabilities.
+  
+Advanced Features:
+  - Multi-model AI orchestration (smollm2, deepseek-r1)
+  - Persistent memory with categorization
+  - Context-aware model routing
+  - Continuous learning and reflection systems
+  - Cross-platform synchronization
+  - Matrix-themed interface`,
+                
+                'models': `AI Model Orchestration:
+  
+1. SmollM2 (Conversational Specialist)
+   - Optimized for natural dialogue
+   - Emotional intelligence capabilities
+   - Engaging interaction patterns
+  
+2. DeepSeek-R1 (Analytical Specialist)
+   - Advanced reasoning capabilities
+   - Technical problem-solving
+   - Complex analysis tasks
+  
+3. Dynamic Model Selection
+   - Automatic routing based on task type
+   - Context-aware model switching
+   - Performance optimization`,
+                
+                'memory': `Advanced Memory System:
+  
+NEO maintains comprehensive context with categorized memory:
+  
+  [MOOD] - Emotional state tracking and preference learning
+  [GOAL] - Current objectives, tasks, and progress tracking
+  [NOTE] - Important information, facts, and user preferences
+  [FEEDBACK] - System performance metrics and improvement areas
+  [REFLECTION] - Learning insights and adaptive behavior patterns
+  
+Type 'memory view' to see current session memory.`,
+                
+                'memory view': `Current Session Memory:
+  
+[GOAL] Demonstrate NEO AI Console advanced capabilities
+[NOTE] User is interacting with web demo version
+[FEEDBACK] System responding effectively to command inputs
+[REFLECTION] Web interface provides good simulation of desktop experience`,
+                
+                'status': `System Status:
+  
+  Memory Module: ONLINE
+  Model Orchestration: ACTIVE
+  Context Routing: OPERATIONAL
+  Reflection Systems: ENGAGED
+  Learning Protocols: ACTIVE
+  
+All systems functioning at optimal capacity.`,
+                
+                'reflect': `Reflection Insights:
+  
+Current session analysis indicates:
+  - User is exploring system capabilities
+  - Command patterns suggest technical proficiency
+  - Interaction style favors direct commands
+  - System adapting to user preferences
+  
+Learning systems actively updating interaction models.`,
+                
+                'clear': '', // Special case - handled separately
+                
+                'exit': 'This is a web demo. In the desktop version, this would exit the console.',
+                
+                '': '' // Handle empty input
+            };
+            
+            // Default response for unknown commands
+            const neoDefaultResponse = "Command not recognized. Type 'help' for available commands.";
+            
+            // Function to add output to NEO terminal
+            function addNeoOutput(text, className = '') {
+                const outputLine = document.createElement('div');
+                outputLine.className = `output-line ${className}`;
+                outputLine.textContent = text;
+                neoTerminalBody.insertBefore(outputLine, neoTerminalBody.lastElementChild);
+                neoTerminalBody.scrollTop = neoTerminalBody.scrollHeight;
+            }
+            
+            // Function to process NEO commands
+            function processNeoCommand(command) {
+                // Show the command that was entered
+                addNeoOutput(`user@neo:~$ ${command}`);
+                
+                // Process special commands
+                if (command === 'clear') {
+                    // Clear terminal except the last command line
+                    const outputLines = neoTerminalBody.querySelectorAll('.output-line');
+                    outputLines.forEach(line => line.remove());
+                    return;
+                }
+                
+                // Get response or use default
+                const response = neoCommands[command.toLowerCase()] || neoDefaultResponse;
+                
+                // Add response to terminal
+                if (response) {
+                    // Split response by lines and add each separately
+                    response.split('\n').forEach(line => {
+                        addNeoOutput(line);
+                    });
+                }
+            }
+            
+            // Handle NEO command input
+            neoCommandInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    const command = neoCommandInput.value.trim();
+                    if (command) {
+                        processNeoCommand(command);
+                    }
+                    neoCommandInput.value = '';
+                }
+            });
+            
+            // Focus on NEO input when clicking anywhere in terminal
+            neoTerminalBody.addEventListener('click', function() {
+                neoCommandInput.focus();
             });
         });
     </script>
