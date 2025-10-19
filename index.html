@@ -13,24 +13,28 @@
             --secondary: #10b981;
             --accent: #8b5cf6;
             --bg: #0f0f23;
-            --bg-light: rgba(26, 26, 46, 0.6);
-            --bg-lighter: rgba(37, 37, 71, 0.4);
-            --text: #e2e8f0;
-            --text-light: #94a3b8;
+            --bg-light: rgba(35, 35, 60, 0.8);
+            --bg-lighter: rgba(50, 50, 80, 0.6);
+            --text: #f1f5f9;
+            --text-light: #cbd5e1;
             --success: #10b981;
             --warning: #f59e0b;
             --error: #ef4444;
             --patch: #8bc34a;
             --neo: #9c27b0;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-shadow: rgba(0, 0, 0, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-shadow: rgba(0, 0, 0, 0.2);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -66,6 +70,46 @@
             padding: 0 20px;
         }
 
+        /* Page Structure */
+        .page {
+            min-height: 100vh;
+            padding-top: 80px;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            font-weight: 600;
+            font-size: 3rem;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
         /* Glassmorphism Base Styles */
         .glass {
             background: var(--glass-bg);
@@ -76,25 +120,26 @@
         }
 
         .glass-light {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         /* Header */
         header {
-            background: rgba(15, 15, 35, 0.7);
+            background: rgba(15, 15, 35, 0.85);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
-            position: sticky;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
             transition: all 0.3s ease;
         }
 
-        .header-content {
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -109,6 +154,7 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 1.5rem;
+            cursor: pointer;
         }
 
         .logo-icon {
@@ -117,6 +163,7 @@
 
         .nav-links {
             display: flex;
+            list-style: none;
             gap: 30px;
         }
 
@@ -127,6 +174,7 @@
             transition: color 0.3s ease;
             position: relative;
             font-size: 1rem;
+            cursor: pointer;
         }
 
         .nav-links a:hover {
@@ -145,6 +193,14 @@
         }
 
         .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
             width: 100%;
         }
 
@@ -167,40 +223,108 @@
             box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
             position: relative;
+        }
+
+        .mobile-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 200px;
+            background-color: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1001;
+            border-radius: 8px;
             overflow: hidden;
         }
 
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 40px;
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        .mobile-dropdown.active {
+            display: block;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
+        .mobile-dropdown ul {
+            list-style: none;
+        }
+
+        .mobile-dropdown li {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-dropdown li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-dropdown a {
+            display: block;
+            padding: 15px 20px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .mobile-dropdown a:hover {
+            background-color: rgba(99, 102, 241, 0.2);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+            min-height: calc(100vh - 80px);
+            margin-top: 80px;
+            transition: all 0.5s ease;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
             margin-bottom: 20px;
+            font-weight: 600;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            line-height: 1.2;
         }
 
-        .hero p {
+        .hero-content p {
             font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
+            margin-bottom: 30px;
             color: var(--text-light);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
         }
 
         .hero-buttons {
@@ -219,6 +343,7 @@
             font-size: 1rem;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            cursor: pointer;
         }
 
         .hero-button.primary {
@@ -228,9 +353,9 @@
         }
 
         .hero-button.secondary {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             color: var(--text);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         .hero-button:hover {
@@ -241,24 +366,6 @@
         /* Models Overview */
         .models-overview {
             padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .section-title p {
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--text-light);
-            font-size: 1.1rem;
         }
 
         .models-grid {
@@ -274,22 +381,22 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(45, 45, 75, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
         .model-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             border-color: rgba(99, 102, 241, 0.4);
         }
 
         .model-header {
             padding: 25px 25px 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             gap: 15px;
@@ -356,7 +463,7 @@
 
         .model-footer {
             padding: 15px 25px 25px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .model-link {
@@ -371,12 +478,13 @@
             width: 100%;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            cursor: pointer;
         }
 
         .patch .model-link {
-            background: rgba(139, 195, 74, 0.15);
+            background: rgba(139, 195, 74, 0.2);
             color: var(--patch);
-            border: 1px solid rgba(139, 195, 74, 0.3);
+            border: 1px solid rgba(139, 195, 74, 0.4);
         }
 
         .patch .model-link:hover {
@@ -385,9 +493,9 @@
         }
 
         .neo .model-link {
-            background: rgba(156, 39, 176, 0.15);
+            background: rgba(156, 39, 176, 0.2);
             color: var(--neo);
-            border: 1px solid rgba(156, 39, 176, 0.3);
+            border: 1px solid rgba(156, 39, 176, 0.4);
         }
 
         .neo .model-link:hover {
@@ -396,9 +504,9 @@
         }
 
         .future .model-link {
-            background: rgba(139, 92, 246, 0.15);
+            background: rgba(139, 92, 246, 0.2);
             color: var(--accent);
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.4);
         }
 
         .future .model-link:hover {
@@ -433,11 +541,11 @@
         .model-content {
             padding: 40px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(45, 45, 75, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
         .model-content h2 {
@@ -478,10 +586,10 @@
             gap: 12px;
             padding: 15px;
             border-radius: 12px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .feature-icon {
@@ -498,24 +606,13 @@
         }
 
         .patch-section .feature-icon {
-            background: rgba(139, 195, 74, 0.15);
+            background: rgba(139, 195, 74, 0.2);
             color: var(--patch);
         }
 
         .neo-section .feature-icon {
-            background: rgba(156, 39, 176, 0.15);
+            background: rgba(156, 39, 176, 0.2);
             color: var(--neo);
-        }
-
-        .feature-text h4 {
-            margin-bottom: 5px;
-            color: var(--text);
-        }
-
-        .feature-text p {
-            font-size: 0.9rem;
-            margin-bottom: 0;
-            color: var(--text-light);
         }
 
         .model-visual {
@@ -534,20 +631,20 @@
 
         /* Terminal Demo Styles */
         .terminal-demo {
-            background: rgba(10, 14, 20, 0.7);
+            background: rgba(20, 25, 35, 0.8);
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
         }
 
         .terminal-header {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
             padding: 12px 15px;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .terminal-buttons {
@@ -675,17 +772,17 @@
             padding: 40px 30px;
             border-radius: 20px;
             transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(45, 45, 75, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
         .future-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
         .future-icon {
@@ -708,7 +805,7 @@
         .coming-soon {
             display: inline-block;
             padding: 6px 15px;
-            background: rgba(139, 92, 246, 0.15);
+            background: rgba(139, 92, 246, 0.2);
             color: var(--accent);
             border-radius: 20px;
             font-size: 0.8rem;
@@ -717,10 +814,77 @@
             -webkit-backdrop-filter: blur(10px);
         }
 
+        /* Contact Page */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .contact-icon {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .contact-item h4 {
+            font-size: 1.3rem;
+        }
+
+        .contact-item p {
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background-color: rgba(45, 45, 75, 0.7);
+            color: var(--text);
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
         /* Footer */
         footer {
             padding: 60px 0 30px;
-            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
         }
 
         .footer-content {
@@ -733,10 +897,10 @@
         .footer-column {
             padding: 30px;
             border-radius: 16px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(45, 45, 75, 0.7);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .footer-column h3 {
@@ -757,6 +921,7 @@
             color: var(--text-light);
             text-decoration: none;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
 
         .footer-links a:hover {
@@ -773,7 +938,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(99, 102, 241, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -793,7 +958,7 @@
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-light);
             font-size: 0.9rem;
         }
@@ -812,22 +977,19 @@
         }
 
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-
             .nav-links {
-                gap: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
+                display: none;
             }
 
-            .hero h1 {
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-content h1 {
                 font-size: 2.5rem;
             }
 
-            .hero p {
+            .hero-content p {
                 font-size: 1.1rem;
             }
 
@@ -852,171 +1014,164 @@
             .future-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            /* Mobile-specific contrast improvements */
+            .model-card,
+            .model-content,
+            .future-card,
+            .footer-column {
+                background: rgba(50, 50, 80, 0.85);
+            }
+            
+            .terminal-demo {
+                background: rgba(25, 30, 40, 0.9);
+            }
         }
 
-        /* Animation for terminal text */
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 18px;
-            background: var(--primary);
-            margin-left: 5px;
-            animation: blink 1s infinite;
-        }
-
-        /* Matrix-style effect */
-        @keyframes matrixRain {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100vh); }
-        }
-
-        .matrix-rain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.03;
-        }
-
-        .matrix-char {
-            position: absolute;
-            color: var(--success);
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            animation: matrixRain 5s linear infinite;
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Matrix Rain Effect -->
-    <div class="matrix-rain" id="matrixRain"></div>
-
     <!-- Header -->
     <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div>AI Tech Hub</div>
-                </a>
-
-                <nav class="nav">
-                    <div class="nav-links">
-                        <a href="#overview">Models</a>
-                        <a href="https://patch-two.vercel.app" target="_blank">PATCH</a>
-                        <a href="https://neo-ashy-eight.vercel.app" target="_blank">NEO</a>
-                        <a href="#future">Future</a>
-                        <a href="#about">About</a>
-                    </div>
-                </nav>
-
-                <a href="#contact" class="cta-button">Get In Touch</a>
+        <div class="container header-container">
+            <a class="logo" id="home-link">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div>AI Tech Hub</div>
+            </a>
+            <ul class="nav-links">
+                <li><a class="nav-link active" data-page="home">Home</a></li>
+                <li><a class="nav-link" data-page="patch">PATCH</a></li>
+                <li><a class="nav-link" data-page="neo">NEO</a></li>
+                <li><a class="nav-link" data-page="future">Future</a></li>
+                <li><a class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+                <div class="mobile-dropdown">
+                    <ul>
+                        <li><a data-page="home">Home</a></li>
+                        <li><a data-page="patch">PATCH</a></li>
+                        <li><a data-page="neo">NEO</a></li>
+                        <li><a data-page="future">Future</a></li>
+                        <li><a data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Cesar's AI Technology Hub</h1>
-                <p>A centralized platform showcasing cutting-edge AI tools, frameworks, and implementations. Explore the future of personal AI assistants and development tools.</p>
-                <div class="hero-buttons">
-                    <a href="#overview" class="hero-button primary">Explore Models</a>
-                    <a href="#future" class="hero-button secondary">Future Projects</a>
-                </div>
+    <!-- Hero Section (Dynamic) -->
+    <section id="hero" class="hero-section">
+        <div class="container hero-content">
+            <h1 id="hero-title">Cesar's AI Technology Hub</h1>
+            <p id="hero-description">A centralized platform showcasing cutting-edge AI tools, frameworks, and implementations. Explore the future of personal AI assistants and development tools.</p>
+            <div class="hero-buttons">
+                <a class="hero-button primary" id="hero-button">Explore Models</a>
+                <a class="hero-button secondary">Future Projects</a>
             </div>
         </div>
     </section>
 
-    <!-- Models Overview -->
-    <section class="models-overview" id="overview">
-        <div class="container">
-            <div class="section-title">
-                <h2>AI Models & Tools</h2>
-                <p>Discover the collection of AI implementations, each designed for specific use cases and optimized for performance.</p>
-            </div>
-
-            <div class="models-grid">
-                <div class="model-card patch">
-                    <div class="model-header">
-                        <div class="model-icon">
-                            <i class="fas fa-feather"></i>
-                        </div>
-                        <div class="model-info">
-                            <h3>PATCH AI Console</h3>
-                            <p>Lightweight & Efficient</p>
-                        </div>
-                    </div>
-                    <div class="model-body">
-                        <ul class="model-features">
-                            <li><i class="fas fa-check"></i> Minimal resource consumption</li>
-                            <li><i class="fas fa-check"></i> Fast response times</li>
-                            <li><i class="fas fa-check"></i> Cross-platform compatibility</li>
-                            <li><i class="fas fa-check"></i> Easy setup and deployment</li>
-                        </ul>
-                        <p>Perfect for everyday AI tasks and quick interactions without heavy system requirements.</p>
-                    </div>
-                    <div class="model-footer">
-                        <a href="https://patch-two.vercel.app" target="_blank" class="model-link">Visit PATCH Website</a>
-                    </div>
+    <!-- Home Page -->
+    <section id="home" class="page active">
+        <div class="container section">
+            <!-- Models Overview -->
+            <div class="models-overview">
+                <div class="section-title">
+                    <h2>AI Models & Tools</h2>
+                    <p>Discover the collection of AI implementations, each designed for specific use cases and optimized for performance.</p>
                 </div>
 
-                <div class="model-card neo">
-                    <div class="model-header">
-                        <div class="model-icon">
-                            <i class="fas fa-robot"></i>
+                <div class="models-grid">
+                    <div class="model-card patch">
+                        <div class="model-header">
+                            <div class="model-icon">
+                                <i class="fas fa-feather"></i>
+                            </div>
+                            <div class="model-info">
+                                <h3>PATCH AI Console</h3>
+                                <p>Lightweight & Efficient</p>
+                            </div>
                         </div>
-                        <div class="model-info">
-                            <h3>NEO AI Console</h3>
-                            <p>Advanced & Sophisticated</p>
+                        <div class="model-body">
+                            <ul class="model-features">
+                                <li><i class="fas fa-check"></i> Minimal resource consumption</li>
+                                <li><i class="fas fa-check"></i> Fast response times</li>
+                                <li><i class="fas fa-check"></i> Cross-platform compatibility</li>
+                                <li><i class="fas fa-check"></i> Easy setup and deployment</li>
+                            </ul>
+                            <p>Perfect for everyday AI tasks and quick interactions without heavy system requirements.</p>
+                        </div>
+                        <div class="model-footer">
+                            <a class="model-link" data-page="patch">Explore PATCH</a>
                         </div>
                     </div>
-                    <div class="model-body">
-                        <ul class="model-features">
-                            <li><i class="fas fa-check"></i> Multi-model orchestration</li>
-                            <li><i class="fas fa-check"></i> Persistent memory system</li>
-                            <li><i class="fas fa-check"></i> Context-aware routing</li>
-                            <li><i class="fas fa-check"></i> Continuous learning</li>
-                        </ul>
-                        <p>Advanced AI console with sophisticated capabilities for complex tasks and personalized interactions.</p>
-                    </div>
-                    <div class="model-footer">
-                        <a href="https://neo-ashy-eight.vercel.app" target="_blank" class="model-link">Visit NEO Website</a>
-                    </div>
-                </div>
 
-                <div class="model-card future">
-                    <div class="model-header">
-                        <div class="model-icon">
-                            <i class="fas fa-plus"></i>
+                    <div class="model-card neo">
+                        <div class="model-header">
+                            <div class="model-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="model-info">
+                                <h3>NEO AI Console</h3>
+                                <p>Advanced & Sophisticated</p>
+                            </div>
                         </div>
-                        <div class="model-info">
-                            <h3>Future Models</h3>
-                            <p>Coming Soon</p>
+                        <div class="model-body">
+                            <ul class="model-features">
+                                <li><i class="fas fa-check"></i> Multi-model orchestration</li>
+                                <li><i class="fas fa-check"></i> Persistent memory system</li>
+                                <li><i class="fas fa-check"></i> Context-aware routing</li>
+                                <li><i class="fas fa-check"></i> Continuous learning</li>
+                            </ul>
+                            <p>Advanced AI console with sophisticated capabilities for complex tasks and personalized interactions.</p>
+                        </div>
+                        <div class="model-footer">
+                            <a class="model-link" data-page="neo">Explore NEO</a>
                         </div>
                     </div>
-                    <div class="model-body">
-                        <ul class="model-features">
-                            <li><i class="fas fa-star"></i> Specialized domain models</li>
-                            <li><i class="fas fa-star"></i> Enhanced reasoning systems</li>
-                            <li><i class="fas fa-star"></i> Multi-modal capabilities</li>
-                            <li><i class="fas fa-star"></i> Enterprise solutions</li>
-                        </ul>
-                        <p>Ongoing development of next-generation AI tools and implementations for various applications.</p>
-                    </div>
-                    <div class="model-footer">
-                        <a href="#future" class="model-link">View Roadmap</a>
+
+                    <div class="model-card future">
+                        <div class="model-header">
+                            <div class="model-icon">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="model-info">
+                                <h3>Future Models</h3>
+                                <p>Coming Soon</p>
+                            </div>
+                        </div>
+                        <div class="model-body">
+                            <ul class="model-features">
+                                <li><i class="fas fa-star"></i> Specialized domain models</li>
+                                <li><i class="fas fa-star"></i> Enhanced reasoning systems</li>
+                                <li><i class="fas fa-star"></i> Multi-modal capabilities</li>
+                                <li><i class="fas fa-star"></i> Enterprise solutions</li>
+                            </ul>
+                            <p>Ongoing development of next-generation AI tools and implementations for various applications.</p>
+                        </div>
+                        <div class="model-footer">
+                            <a class="model-link" data-page="future">View Roadmap</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1024,8 +1179,8 @@
     </section>
 
     <!-- PATCH Section -->
-    <section class="model-section patch-section" id="patch">
-        <div class="container">
+    <section id="patch" class="page">
+        <div class="container section">
             <div class="model-detail">
                 <div class="model-content">
                     <h2><span class="accent">PATCH</span> AI Console</h2>
@@ -1107,8 +1262,8 @@
     </section>
 
     <!-- NEO Section -->
-    <section class="model-section neo-section" id="neo">
-        <div class="container">
+    <section id="neo" class="page">
+        <div class="container section">
             <div class="model-detail reverse">
                 <div class="model-content">
                     <h2><span class="accent">NEO</span> AI Console</h2>
@@ -1192,8 +1347,8 @@
     </section>
 
     <!-- Future Models Section -->
-    <section class="future-models" id="future">
-        <div class="container">
+    <section id="future" class="page">
+        <div class="container section">
             <div class="section-title">
                 <h2>Future Projects & Roadmap</h2>
                 <p>Explore the upcoming AI tools and implementations currently in development.</p>
@@ -1230,8 +1385,75 @@
         </div>
     </section>
 
+    <!-- Contact Page -->
+    <section id="contact" class="page">
+        <div class="container section">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Have questions about our AI models or interested in collaboration? Reach out to us.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contact@aitechhub.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Based in the United States</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Response Time</h4>
+                            <p>We typically respond within 24 hours</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" required>
+                                <option value="" disabled selected>Inquiry Type</option>
+                                <option value="technical">Technical Support</option>
+                                <option value="collaboration">Collaboration</option>
+                                <option value="general">General Question</option>
+                                <option value="feedback">Feedback</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
@@ -1248,9 +1470,9 @@
                 <div class="footer-column">
                     <h3>Models</h3>
                     <ul class="footer-links">
-                        <li><a href="https://patch-two.vercel.app" target="_blank">PATCH AI Console</a></li>
-                        <li><a href="https://neo-ashy-eight.vercel.app" target="_blank">NEO AI Console</a></li>
-                        <li><a href="#future">Future Projects</a></li>
+                        <li><a data-page="patch">PATCH AI Console</a></li>
+                        <li><a data-page="neo">NEO AI Console</a></li>
+                        <li><a data-page="future">Future Projects</a></li>
                         <li><a href="#">Documentation</a></li>
                     </ul>
                 </div>
@@ -1268,7 +1490,7 @@
                 <div class="footer-column">
                     <h3>Connect</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Contact</a></li>
+                        <li><a data-page="contact">Contact</a></li>
                         <li><a href="#">Feedback</a></li>
                         <li><a href="#">Contribute</a></li>
                         <li><a href="#">Newsletter</a></li>
@@ -1283,56 +1505,154 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const matrixRain = document.getElementById('matrixRain');
-            
-            // Create matrix rain effect
-            function createMatrixRain() {
-                const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-                const columns = Math.floor(window.innerWidth / 14);
-                
-                for (let i = 0; i < columns; i++) {
-                    const char = document.createElement('div');
-                    char.className = 'matrix-char';
-                    char.style.left = `${i * 14}px`;
-                    char.style.animationDelay = `${Math.random() * 5}s`;
-                    char.textContent = chars.charAt(Math.floor(Math.random() * chars.length));
-                    matrixRain.appendChild(char);
-                }
+        // Hero content for each page
+        const heroContent = {
+            home: {
+                title: "Cesar's AI Technology Hub",
+                description: "A centralized platform showcasing cutting-edge AI tools, frameworks, and implementations. Explore the future of personal AI assistants and development tools.",
+                buttonText: "Explore Models",
+                buttonPage: "home"
+            },
+            patch: {
+                title: "PATCH AI Console",
+                description: "A lightweight, efficient AI console designed for developers and power users who need fast, responsive AI interactions without heavy resource requirements.",
+                buttonText: "Visit PATCH Website",
+                buttonPage: "patch"
+            },
+            neo: {
+                title: "NEO AI Console",
+                description: "An advanced personal AI console with persistent memory, multi-model orchestration, and sophisticated reflection systems for complex AI interactions.",
+                buttonText: "Visit NEO Website",
+                buttonPage: "neo"
+            },
+            future: {
+                title: "Future Projects & Roadmap",
+                description: "Explore the upcoming AI tools and implementations currently in development. Discover what's next in AI technology.",
+                buttonText: "View Roadmap",
+                buttonPage: "future"
+            },
+            contact: {
+                title: "Get In Touch",
+                description: "Have questions about our AI models or interested in collaboration? Reach out to us and let's build the future of AI together.",
+                buttonText: "Send Message",
+                buttonPage: "contact"
             }
+        };
+
+        // Page Navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-dropdown a, .footer-links a[data-page], .model-link[data-page]');
+            const pages = document.querySelectorAll('.page');
+            const heroSection = document.getElementById('hero');
+            const heroTitle = document.getElementById('hero-title');
+            const heroDescription = document.getElementById('hero-description');
+            const heroButton = document.getElementById('hero-button');
+            const homeLink = document.getElementById('home-link');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileDropdown = document.querySelector('.mobile-dropdown');
             
-            createMatrixRain();
+            // Show home page by default
+            showPage('home');
+            updateHeroContent('home');
             
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+            // Add click event to navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
+                    const pageId = this.getAttribute('data-page');
+                    navigateToPage(pageId);
                 });
+            });
+            
+            // Home logo link
+            homeLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                navigateToPage('home');
+            });
+            
+            // Hero button
+            heroButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const currentPage = document.querySelector('.nav-link.active').getAttribute('data-page');
+                const targetPage = heroContent[currentPage].buttonPage;
+                navigateToPage(targetPage);
+            });
+            
+            // Mobile menu toggle
+            mobileMenu.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mobileDropdown.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function() {
+                mobileDropdown.classList.remove('active');
+            });
+            
+            // Form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message. We will contact you soon.');
+                this.reset();
             });
             
             // Header scroll effect
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
-                if (window.scrollY > 100) {
-                    header.style.background = 'rgba(15, 15, 35, 0.9)';
+                if (window.scrollY > 50) {
                     header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
                 } else {
-                    header.style.background = 'rgba(15, 15, 35, 0.7)';
                     header.style.boxShadow = 'none';
                 }
             });
-
+            
+            function navigateToPage(pageId) {
+                // Update active nav link
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                document.querySelectorAll(`[data-page="${pageId}"]`).forEach(link => {
+                    link.classList.add('active');
+                });
+                
+                // Show selected page and update hero
+                showPage(pageId);
+                updateHeroContent(pageId);
+                
+                // Close mobile menu if open
+                mobileDropdown.classList.remove('active');
+            }
+            
+            function showPage(pageId) {
+                // Hide all pages
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // If not home page, show the page content
+                if (pageId !== 'home') {
+                    document.getElementById(pageId).classList.add('active');
+                }
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            function updateHeroContent(pageId) {
+                const content = heroContent[pageId];
+                if (content) {
+                    // Add loading animation
+                    heroSection.style.opacity = '0.7';
+                    
+                    setTimeout(() => {
+                        heroTitle.textContent = content.title;
+                        heroDescription.textContent = content.description;
+                        heroButton.textContent = content.buttonText;
+                        
+                        // Remove loading animation
+                        heroSection.style.opacity = '1';
+                    }, 300);
+                }
+            }
+            
             // PATCH Terminal Demo
             const patchTerminalBody = document.getElementById('patchTerminalBody');
             const patchCommandInput = document.getElementById('patchCommandInput');
