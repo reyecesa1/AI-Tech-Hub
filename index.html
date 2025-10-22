@@ -529,31 +529,39 @@
             color: white;
         }
 
-        /* Individual Model Sections */
+        /* UPDATED: Individual Model Sections - Demo on top, content below */
         .model-section {
             padding: 100px 0;
         }
 
-        .model-detail {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
+        /* Remove the old grid layout */
+        .model-detail,
         .model-detail.reverse {
-            grid-template-columns: 1fr 1fr;
+            display: block; /* Change from grid to block layout */
         }
 
-        .model-detail.reverse .model-content {
-            order: 2;
-        }
-
+        .model-detail.reverse .model-content,
         .model-detail.reverse .model-visual {
-            order: 1;
+            order: initial; /* Reset any ordering */
         }
 
-        .model-content {
+        /* UPDATED: Demo section - wider and on top */
+        .model-demo-section {
+            margin-bottom: 60px;
+            width: 100%;
+        }
+
+        .model-demo-full {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* UPDATED: Content section - full width below demo */
+        .model-content-full {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
             padding: 40px;
             border-radius: 20px;
             background: rgba(45, 45, 75, 0.7);
@@ -563,25 +571,25 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
-        .model-content h2 {
+        .model-content-full h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
             color: var(--text);
         }
 
-        .model-content h2 .accent {
+        .model-content-full h2 .accent {
             background: linear-gradient(135deg, var(--patch), #306824);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .neo-section .model-content h2 .accent {
+        .neo-section .model-content-full h2 .accent {
             background: linear-gradient(135deg, var(--neo), #6a1b9a);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .model-content p {
+        .model-content-full p {
             margin-bottom: 25px;
             color: var(--text-light);
             font-size: 1.1rem;
@@ -630,28 +638,15 @@
             color: var(--neo);
         }
 
-        .model-visual {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(99, 102, 241, 0.1);
-        }
-
-        .model-visual img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Terminal Demo Styles */
-        .terminal-demo {
+        /* UPDATED: Terminal Demo Styles - Larger and wider */
+        .terminal-demo-full {
             background: rgba(20, 25, 35, 0.8);
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
+            width: 100%;
         }
 
         .terminal-header {
@@ -694,11 +689,11 @@
         }
 
         .terminal-body {
-            padding: 15px;
-            height: 250px;
+            padding: 20px;
+            height: 350px; /* Increased height for larger demo */
             overflow-y: auto;
             font-family: 'Source Code Pro', monospace;
-            font-size: 0.9rem;
+            font-size: 1rem; /* Slightly larger font */
         }
 
         .terminal-output {
@@ -725,7 +720,7 @@
             background: transparent;
             border: none;
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 1rem;
             flex: 1;
             outline: none;
             font-family: 'Source Code Pro', monospace;
@@ -980,14 +975,9 @@
 
         /* Responsive Design - UPDATED for better mobile spacing */
         @media (max-width: 1024px) {
-            .model-detail, .model-detail.reverse {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .model-detail.reverse .model-content,
-            .model-detail.reverse .model-visual {
-                order: initial;
+            .model-demo-full,
+            .model-content-full {
+                max-width: 900px;
             }
         }
 
@@ -1048,15 +1038,26 @@
                 max-width: 300px;
             }
             
+            /* UPDATED: Adjust terminal height for mobile */
+            .terminal-body {
+                height: 300px;
+                padding: 15px;
+            }
+            
+            /* UPDATED: Adjust content padding for mobile */
+            .model-content-full {
+                padding: 30px 25px;
+            }
+            
             /* Mobile-specific contrast improvements */
             .model-card,
-            .model-content,
+            .model-content-full,
             .future-card,
             .footer-column {
                 background: rgba(50, 50, 80, 0.85) !important;
             }
             
-            .terminal-demo {
+            .terminal-demo-full {
                 background: rgba(25, 30, 40, 0.9) !important;
             }
         }
@@ -1092,6 +1093,16 @@
                 right: 20px;
                 width: calc(100vw - 40px);
             }
+            
+            /* UPDATED: Further adjust terminal for small screens */
+            .terminal-body {
+                height: 250px;
+                font-size: 0.9rem;
+            }
+            
+            .model-content-full h2 {
+                font-size: 2rem;
+            }
         }
 
         @media (max-width: 400px) {
@@ -1117,6 +1128,15 @@
             .mobile-dropdown {
                 right: 18px;
                 width: calc(100vw - 36px);
+            }
+            
+            .terminal-body {
+                height: 220px;
+                padding: 12px;
+            }
+            
+            .model-content-full {
+                padding: 25px 20px;
             }
         }
     </style>
@@ -1259,11 +1279,42 @@
         </div>
     </section>
 
-    <!-- PATCH Section -->
+    <!-- UPDATED: PATCH Section - Demo on top, content below -->
     <section id="patch" class="page">
         <div class="container section">
             <div class="model-detail">
-                <div class="model-content">
+                <!-- Demo Section - Now on top -->
+                <div class="model-demo-section">
+                    <div class="model-demo-full">
+                        <div class="terminal-demo-full">
+                            <div class="terminal-header">
+                                <div class="terminal-buttons">
+                                    <div class="terminal-button close"></div>
+                                    <div class="terminal-button minimize"></div>
+                                    <div class="terminal-button maximize"></div>
+                                </div>
+                                <div class="terminal-title">patch-ai-console — bash — 80x24</div>
+                            </div>
+                            <div class="terminal-body" id="patchTerminalBody">
+                                <div class="terminal-output">
+                                    <div class="output-line system">Patch AI Console v1.0.3</div>
+                                    <div class="output-line system">Initializing systems...</div>
+                                    <div class="output-line system">Memory module loaded</div>
+                                    <div class="output-line system">Model registry active</div>
+                                    <div class="output-line success">System ready. Type 'help' for available commands.</div>
+                                </div>
+                                <div class="command-line">
+                                    <span class="prompt">user@patch:~$</span>
+                                    <input type="text" class="command-input" id="patchCommandInput" autofocus>
+                                    <span class="cursor"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Section - Now below demo -->
+                <div class="model-content-full">
                     <h2><span class="accent">PATCH</span> AI Console</h2>
                     <p>A lightweight, efficient AI console designed for developers and power users who need fast, responsive AI interactions without heavy resource requirements.</p>
                     
@@ -1311,42 +1362,48 @@
                     
                     <a href="https://patch-two.vercel.app" target="_blank" class="cta-button">Visit PATCH Website</a>
                 </div>
-                
-                <div class="model-visual">
-                    <div class="terminal-demo">
-                        <div class="terminal-header">
-                            <div class="terminal-buttons">
-                                <div class="terminal-button close"></div>
-                                <div class="terminal-button minimize"></div>
-                                <div class="terminal-button maximize"></div>
-                            </div>
-                            <div class="terminal-title">patch-ai-console — bash — 80x24</div>
-                        </div>
-                        <div class="terminal-body" id="patchTerminalBody">
-                            <div class="terminal-output">
-                                <div class="output-line system">Patch AI Console v1.0.3</div>
-                                <div class="output-line system">Initializing systems...</div>
-                                <div class="output-line system">Memory module loaded</div>
-                                <div class="output-line system">Model registry active</div>
-                                <div class="output-line success">System ready. Type 'help' for available commands.</div>
-                            </div>
-                            <div class="command-line">
-                                <span class="prompt">user@patch:~$</span>
-                                <input type="text" class="command-input" id="patchCommandInput" autofocus>
-                                <span class="cursor"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- NEO Section -->
+    <!-- UPDATED: NEO Section - Demo on top, content below -->
     <section id="neo" class="page">
         <div class="container section">
-            <div class="model-detail reverse">
-                <div class="model-content">
+            <div class="model-detail">
+                <!-- Demo Section - Now on top -->
+                <div class="model-demo-section">
+                    <div class="model-demo-full">
+                        <div class="terminal-demo-full">
+                            <div class="terminal-header">
+                                <div class="terminal-buttons">
+                                    <div class="terminal-button close"></div>
+                                    <div class="terminal-button minimize"></div>
+                                    <div class="terminal-button maximize"></div>
+                                </div>
+                                <div class="terminal-title">neo-ai-console — bash — 80x24</div>
+                            </div>
+                            <div class="terminal-body" id="neoTerminalBody">
+                                <div class="terminal-output">
+                                    <div class="output-line matrix">NEO AI Console v2.1.0</div>
+                                    <div class="output-line matrix">Initializing advanced systems...</div>
+                                    <div class="output-line system">Loading persistent memory module</div>
+                                    <div class="output-line system">Model orchestration system active</div>
+                                    <div class="output-line system">Context-aware routing initialized</div>
+                                    <div class="output-line system">Reflection and learning systems online</div>
+                                    <div class="output-line success">System ready. Type 'help' for available commands.</div>
+                                </div>
+                                <div class="command-line">
+                                    <span class="prompt neo-prompt">user@neo:~$</span>
+                                    <input type="text" class="command-input" id="neoCommandInput" autofocus>
+                                    <span class="cursor neo-cursor"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Section - Now below demo -->
+                <div class="model-content-full">
                     <h2><span class="accent">NEO</span> AI Console</h2>
                     <p>An advanced personal AI console with persistent memory, multi-model orchestration, and sophisticated reflection systems for complex AI interactions.</p>
                     
@@ -1393,35 +1450,6 @@
                     </div>
                     
                     <a href="https://neo-ashy-eight.vercel.app" target="_blank" class="cta-button">Visit NEO Website</a>
-                </div>
-                
-                <div class="model-visual">
-                    <div class="terminal-demo">
-                        <div class="terminal-header">
-                            <div class="terminal-buttons">
-                                <div class="terminal-button close"></div>
-                                <div class="terminal-button minimize"></div>
-                                <div class="terminal-button maximize"></div>
-                            </div>
-                            <div class="terminal-title">neo-ai-console — bash — 80x24</div>
-                        </div>
-                        <div class="terminal-body" id="neoTerminalBody">
-                            <div class="terminal-output">
-                                <div class="output-line matrix">NEO AI Console v2.1.0</div>
-                                <div class="output-line matrix">Initializing advanced systems...</div>
-                                <div class="output-line system">Loading persistent memory module</div>
-                                <div class="output-line system">Model orchestration system active</div>
-                                <div class="output-line system">Context-aware routing initialized</div>
-                                <div class="output-line system">Reflection and learning systems online</div>
-                                <div class="output-line success">System ready. Type 'help' for available commands.</div>
-                            </div>
-                            <div class="command-line">
-                                <span class="prompt neo-prompt">user@neo:~$</span>
-                                <input type="text" class="command-input" id="neoCommandInput" autofocus>
-                                <span class="cursor neo-cursor"></span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
