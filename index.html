@@ -278,18 +278,16 @@
             color: var(--primary);
         }
 
-        /* Hero Section with Video Background - SIMPLIFIED */
+        /* Hero Section - EXACT COPY FROM WORKING SITES */
         .hero-section {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             min-height: calc(100vh - 80px);
             margin-top: 80px;
-            position: relative;
             overflow: hidden;
-            /* Fallback background */
-            background: linear-gradient(135deg, #0f0f23 0%, #050517 100%);
         }
 
         .hero-video {
@@ -315,6 +313,8 @@
         .hero-content {
             max-width: 800px;
             animation: fadeInUp 0.8s ease;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes fadeInUp {
@@ -1050,17 +1050,6 @@
             .terminal-demo {
                 background: rgba(25, 30, 40, 0.9) !important;
             }
-            
-            /* Ensure video displays properly on mobile */
-            .hero-video {
-                display: block;
-                min-height: 100%;
-                min-width: 100%;
-            }
-            
-            .hero-overlay {
-                background: rgba(15, 15, 35, 0.85);
-            }
         }
 
         @media (max-width: 576px) {
@@ -1110,9 +1099,9 @@
         </div>
     </header>
 
-    <!-- Hero Section with Video Background - SIMPLIFIED -->
+    <!-- Hero Section - EXACT COPY FROM WORKING SITES -->
     <section id="hero" class="hero-section">
-        <video autoplay muted loop playsinline class="hero-video">
+        <video class="hero-video" autoplay muted loop playsinline>
             <source src="tech.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -1640,19 +1629,6 @@
                 } else {
                     header.style.boxShadow = 'none';
                 }
-            });
-            
-            // Simple video initialization - no complex mobile detection
-            const video = document.querySelector('.hero-video');
-            
-            // Simple error handling
-            video.addEventListener('error', function() {
-                console.log('Video failed to load, using fallback background');
-            });
-            
-            // Optional: Log when video loads successfully
-            video.addEventListener('loadeddata', function() {
-                console.log('Video loaded successfully');
             });
             
             function navigateToPage(pageId) {
