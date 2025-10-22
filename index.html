@@ -228,6 +228,8 @@
             font-size: 1.5rem;
             cursor: pointer;
             position: relative;
+            padding: 8px;
+            margin-right: -8px; /* Compensate for padding */
         }
 
         .mobile-dropdown {
@@ -976,7 +978,7 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive Design */
+        /* Responsive Design - UPDATED for better mobile spacing */
         @media (max-width: 1024px) {
             .model-detail, .model-detail.reverse {
                 grid-template-columns: 1fr;
@@ -990,12 +992,19 @@
         }
 
         @media (max-width: 768px) {
+            /* UPDATED: Improved container padding for mobile */
+            .container {
+                padding: 0 25px;
+            }
+
             .nav-links {
                 display: none;
             }
 
             .mobile-menu {
                 display: block;
+                padding: 8px;
+                margin-right: -8px; /* Compensate for padding */
             }
 
             .hero-content h1 {
@@ -1032,6 +1041,13 @@
                 flex-direction: column;
             }
             
+            /* UPDATED: Better spacing for mobile dropdown */
+            .mobile-dropdown {
+                right: 25px; /* Align with container padding */
+                width: calc(100vw - 50px); /* Full width minus container padding */
+                max-width: 300px;
+            }
+            
             /* Mobile-specific contrast improvements */
             .model-card,
             .model-content,
@@ -1046,6 +1062,23 @@
         }
 
         @media (max-width: 576px) {
+            /* UPDATED: Further improved spacing for small mobile devices */
+            .container {
+                padding: 0 20px;
+            }
+
+            .header-container {
+                padding: 15px 0;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .mobile-menu {
+                margin-right: -5px;
+            }
+
             .hero-content h1 {
                 font-size: 2.2rem;
             }
@@ -1054,8 +1087,36 @@
                 font-size: 2.2rem;
             }
             
+            /* UPDATED: Adjust mobile dropdown for smaller screens */
+            .mobile-dropdown {
+                right: 20px;
+                width: calc(100vw - 40px);
+            }
+        }
+
+        @media (max-width: 400px) {
+            /* UPDATED: Extra small device adjustments */
+            .container {
+                padding: 0 18px;
+            }
+
             .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                font-size: 24px;
+            }
+
+            .mobile-menu {
                 font-size: 1.3rem;
+                padding: 6px;
+                margin-right: -6px;
+            }
+
+            .mobile-dropdown {
+                right: 18px;
+                width: calc(100vw - 36px);
             }
         }
     </style>
