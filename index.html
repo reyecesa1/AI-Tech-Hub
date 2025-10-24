@@ -537,7 +537,7 @@
         .ai-models-container {
             display: flex;
             flex-direction: column;
-            gap: 60px;
+            gap: 80px;
         }
 
         .ai-model-card {
@@ -546,72 +546,7 @@
             gap: 40px;
         }
 
-        .model-video-section {
-            width: 100%;
-        }
-
-        .model-video-full {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .video-container {
-            width: 100%;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            position: relative;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        .video-container video {
-            width: 100%;
-            display: block;
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .video-overlay:hover {
-            opacity: 1;
-        }
-
-        .play-button {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .play-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        /* Content section - full width below video */
+        /* Content section - Now on top */
         .model-content-full {
             width: 100%;
             max-width: 1000px;
@@ -690,6 +625,33 @@
         .neo-section .feature-icon {
             background: rgba(156, 39, 176, 0.2);
             color: var(--neo);
+        }
+
+        /* Video Section - Now below content */
+        .model-video-section {
+            width: 100%;
+        }
+
+        .model-video-full {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .video-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
         }
 
         /* Future Models Section */
@@ -1198,24 +1160,7 @@
             <div class="ai-models-container">
                 <!-- PATCH Section -->
                 <div class="ai-model-card patch-section">
-                    <!-- Video Section - Now on top -->
-                    <div class="model-video-section">
-                        <div class="model-video-full">
-                            <div class="video-container">
-                                <video id="patchVideo" controls>
-                                    <source src="PV.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <div class="video-overlay">
-                                    <div class="play-button">
-                                        <i class="fas fa-play"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Content Section - Now below video -->
+                    <!-- Content Section - Now on top -->
                     <div class="model-content-full">
                         <h2><span class="accent">PATCH</span> AI Console</h2>
                         <p>A lightweight, off-line AI console designed for developers and power users who need fast, responsive AI interactions without heavy resource requirements.</p>
@@ -1264,28 +1209,23 @@
                         
                         <a href="https://patch-ai-nerdspace-cr.vercel.app" target="_blank" class="cta-button">Visit PATCH Website</a>
                     </div>
+                    
+                    <!-- Video Section - Now below content -->
+                    <div class="model-video-section">
+                        <div class="model-video-full">
+                            <div class="video-container">
+                                <video autoplay muted loop playsinline>
+                                    <source src="PV.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- NEO Section -->
                 <div class="ai-model-card neo-section">
-                    <!-- Video Section - Now on top -->
-                    <div class="model-video-section">
-                        <div class="model-video-full">
-                            <div class="video-container">
-                                <video id="neoVideo" controls>
-                                    <source src="PV.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <div class="video-overlay">
-                                    <div class="play-button">
-                                        <i class="fas fa-play"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Content Section - Now below video -->
+                    <!-- Content Section - Now on top -->
                     <div class="model-content-full">
                         <h2><span class="accent">NEO</span> AI Console</h2>
                         <p>An advanced personal AI console with persistent memory, multi-model orchestration, and sophisticated reflection systems for complex AI interactions.</p>
@@ -1333,6 +1273,18 @@
                         </div>
                         
                         <a href="https://neo-ai-nerdspace-cr.vercel.app" target="_blank" class="cta-button">Visit NEO Website</a>
+                    </div>
+                    
+                    <!-- Video Section - Now below content -->
+                    <div class="model-video-section">
+                        <div class="model-video-full">
+                            <div class="video-container">
+                                <video autoplay muted loop playsinline>
+                                    <source src="NVS.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1537,10 +1489,6 @@
             const mobileMenu = document.querySelector('.mobile-menu');
             const mobileDropdown = document.querySelector('.mobile-dropdown');
             
-            // Video elements
-            const patchVideo = document.getElementById('patchVideo');
-            const neoVideo = document.getElementById('neoVideo');
-            
             // Show home page by default
             showPage('home');
             updateHeroContent('home');
@@ -1594,27 +1542,6 @@
                 } else {
                     header.style.boxShadow = 'none';
                 }
-            });
-            
-            // Video play/pause functionality
-            document.querySelectorAll('.video-overlay').forEach(overlay => {
-                overlay.addEventListener('click', function() {
-                    const video = this.previousElementSibling;
-                    if (video.paused) {
-                        video.play();
-                        this.style.opacity = '0';
-                    } else {
-                        video.pause();
-                        this.style.opacity = '1';
-                    }
-                });
-            });
-            
-            // Reset video overlays when videos end
-            document.querySelectorAll('video').forEach(video => {
-                video.addEventListener('ended', function() {
-                    this.nextElementSibling.style.opacity = '1';
-                });
             });
             
             function navigateToPage(pageId) {
