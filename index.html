@@ -529,35 +529,89 @@
             color: white;
         }
 
-        /* UPDATED: Individual Model Sections - Demo on top, content below */
-        .model-section {
+        /* UPDATED: AI Models Section - Combined Patch and NEO */
+        .ai-models-section {
             padding: 100px 0;
         }
 
-        /* Remove the old grid layout */
-        .model-detail,
-        .model-detail.reverse {
-            display: block; /* Change from grid to block layout */
+        .ai-models-container {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
         }
 
-        .model-detail.reverse .model-content,
-        .model-detail.reverse .model-visual {
-            order: initial; /* Reset any ordering */
+        .ai-model-card {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
-        /* UPDATED: Demo section - wider and on top */
-        .model-demo-section {
-            margin-bottom: 60px;
+        .model-video-section {
             width: 100%;
         }
 
-        .model-demo-full {
+        .model-video-full {
             width: 100%;
             max-width: 1000px;
             margin: 0 auto;
         }
 
-        /* UPDATED: Content section - full width below demo */
+        .video-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-overlay:hover {
+            opacity: 1;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Content section - full width below video */
         .model-content-full {
             width: 100%;
             max-width: 1000px;
@@ -636,133 +690,6 @@
         .neo-section .feature-icon {
             background: rgba(156, 39, 176, 0.2);
             color: var(--neo);
-        }
-
-        /* UPDATED: Terminal Demo Styles - Larger and wider */
-        .terminal-demo-full {
-            background: rgba(20, 25, 35, 0.8);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            width: 100%;
-        }
-
-        .terminal-header {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 12px 15px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .terminal-buttons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .terminal-button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .terminal-button.close {
-            background: #ff5f57;
-        }
-
-        .terminal-button.minimize {
-            background: #ffbd2e;
-        }
-
-        .terminal-button.maximize {
-            background: #28ca42;
-        }
-
-        .terminal-title {
-            flex: 1;
-            text-align: center;
-            color: var(--text);
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .terminal-body {
-            padding: 20px;
-            height: 350px; /* Increased height for larger demo */
-            overflow-y: auto;
-            font-family: 'Source Code Pro', monospace;
-            font-size: 1rem; /* Slightly larger font */
-        }
-
-        .terminal-output {
-            margin-bottom: 10px;
-        }
-
-        .command-line {
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .prompt {
-            color: var(--patch);
-            margin-right: 10px;
-            white-space: nowrap;
-        }
-
-        .neo-prompt {
-            color: #00ff41;
-        }
-
-        .command-input {
-            background: transparent;
-            border: none;
-            color: var(--text-light);
-            font-size: 1rem;
-            flex: 1;
-            outline: none;
-            font-family: 'Source Code Pro', monospace;
-        }
-
-        .output-line {
-            margin: 6px 0;
-            line-height: 1.4;
-        }
-
-        .output-line.system {
-            color: #4fc3f7;
-        }
-
-        .output-line.error {
-            color: #ef4444;
-        }
-
-        .output-line.success {
-            color: #10b981;
-        }
-
-        .output-line.matrix {
-            color: #00ff41;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .cursor {
-            display: inline-block;
-            width: 6px;
-            height: 14px;
-            background: var(--patch);
-            margin-left: 5px;
-            animation: blink 1s infinite;
-        }
-
-        .neo-cursor {
-            background: #00ff41;
         }
 
         /* Future Models Section */
@@ -975,7 +902,7 @@
 
         /* Responsive Design - UPDATED for better mobile spacing */
         @media (max-width: 1024px) {
-            .model-demo-full,
+            .model-video-full,
             .model-content-full {
                 max-width: 900px;
             }
@@ -1038,12 +965,6 @@
                 max-width: 300px;
             }
             
-            /* UPDATED: Adjust terminal height for mobile */
-            .terminal-body {
-                height: 300px;
-                padding: 15px;
-            }
-            
             /* UPDATED: Adjust content padding for mobile */
             .model-content-full {
                 padding: 30px 25px;
@@ -1057,7 +978,7 @@
                 background: rgba(50, 50, 80, 0.85) !important;
             }
             
-            .terminal-demo-full {
+            .video-container {
                 background: rgba(25, 30, 40, 0.9) !important;
             }
         }
@@ -1094,12 +1015,6 @@
                 width: calc(100vw - 40px);
             }
             
-            /* UPDATED: Further adjust terminal for small screens */
-            .terminal-body {
-                height: 250px;
-                font-size: 0.9rem;
-            }
-            
             .model-content-full h2 {
                 font-size: 2rem;
             }
@@ -1130,11 +1045,6 @@
                 width: calc(100vw - 36px);
             }
             
-            .terminal-body {
-                height: 220px;
-                padding: 12px;
-            }
-            
             .model-content-full {
                 padding: 25px 20px;
             }
@@ -1153,8 +1063,7 @@
             </a>
             <ul class="nav-links">
                 <li><a class="nav-link active" data-page="home">Home</a></li>
-                <li><a class="nav-link" data-page="patch">PATCH</a></li>
-                <li><a class="nav-link" data-page="neo">NEO</a></li>
+                <li><a class="nav-link" data-page="ai-models">AI Models</a></li>
                 <li><a class="nav-link" data-page="future">Future</a></li>
                 <li><a class="nav-link" data-page="contact">Contact</a></li>
             </ul>
@@ -1163,8 +1072,7 @@
                 <div class="mobile-dropdown">
                     <ul>
                         <li><a data-page="home">Home</a></li>
-                        <li><a data-page="patch">PATCH</a></li>
-                        <li><a data-page="neo">NEO</a></li>
+                        <li><a data-page="ai-models">AI Models</a></li>
                         <li><a data-page="future">Future</a></li>
                         <li><a data-page="contact">Contact</a></li>
                     </ul>
@@ -1223,7 +1131,7 @@
                             <p>Perfect for everyday AI tasks and quick interactions without heavy system requirements.</p>
                         </div>
                         <div class="model-footer">
-                            <a class="model-link" data-page="patch">Explore PATCH</a>
+                            <a class="model-link" data-page="ai-models">Explore PATCH</a>
                         </div>
                     </div>
 
@@ -1247,7 +1155,7 @@
                             <p>Advanced AI console with sophisticated capabilities for complex tasks and personalized interactions.</p>
                         </div>
                         <div class="model-footer">
-                            <a class="model-link" data-page="neo">Explore NEO</a>
+                            <a class="model-link" data-page="ai-models">Explore NEO</a>
                         </div>
                     </div>
 
@@ -1279,177 +1187,153 @@
         </div>
     </section>
 
-    <!-- UPDATED: PATCH Section - Demo on top, content below -->
-    <section id="patch" class="page">
-        <div class="container section">
-            <div class="model-detail">
-                <!-- Demo Section - Now on top -->
-                <div class="model-demo-section">
-                    <div class="model-demo-full">
-                        <div class="terminal-demo-full">
-                            <div class="terminal-header">
-                                <div class="terminal-buttons">
-                                    <div class="terminal-button close"></div>
-                                    <div class="terminal-button minimize"></div>
-                                    <div class="terminal-button maximize"></div>
-                                </div>
-                                <div class="terminal-title">patch-ai-console — bash — 80x24</div>
-                            </div>
-                            <div class="terminal-body" id="patchTerminalBody">
-                                <div class="terminal-output">
-                                    <div class="output-line system">Patch AI Console v1.0.3</div>
-                                    <div class="output-line system">Initializing systems...</div>
-                                    <div class="output-line system">Memory module loaded</div>
-                                    <div class="output-line system">Model registry active</div>
-                                    <div class="output-line success">System ready. Type 'help' for available commands.</div>
-                                </div>
-                                <div class="command-line">
-                                    <span class="prompt">user@patch:~$</span>
-                                    <input type="text" class="command-input" id="patchCommandInput" autofocus>
-                                    <span class="cursor"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Content Section - Now below demo -->
-                <div class="model-content-full">
-                    <h2><span class="accent">PATCH</span> AI Console</h2>
-                    <p>A lightweight, off-line AI console designed for developers and power users who need fast, responsive AI interactions without heavy resource requirements.</p>
-                    
-                    <div class="model-features-grid">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-bolt"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Lightning Fast</h4>
-                                <p>Optimized for minimal resource consumption with rapid response times.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-plug"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Cross-Platform</h4>
-                                <p>Runs seamlessly on Windows, macOS, and Linux environments.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Privacy Focused</h4>
-                                <p>All processing happens locally - your data never leaves your machine.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Developer Friendly</h4>
-                                <p>Simple setup with clear documentation and easy customization.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="https://patch-ai-nerdspace-cr.vercel.app" target="_blank" class="cta-button">Visit PATCH Website</a>
-                </div>
+    <!-- UPDATED: AI Models Section - Combined Patch and NEO -->
+    <section id="ai-models" class="page">
+        <div class="container section ai-models-section">
+            <div class="section-title">
+                <h2>AI Models</h2>
+                <p>Explore our collection of AI implementations, each designed for specific use cases and optimized for performance.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- UPDATED: NEO Section - Demo on top, content below -->
-    <section id="neo" class="page">
-        <div class="container section">
-            <div class="model-detail">
-                <!-- Demo Section - Now on top -->
-                <div class="model-demo-section">
-                    <div class="model-demo-full">
-                        <div class="terminal-demo-full">
-                            <div class="terminal-header">
-                                <div class="terminal-buttons">
-                                    <div class="terminal-button close"></div>
-                                    <div class="terminal-button minimize"></div>
-                                    <div class="terminal-button maximize"></div>
-                                </div>
-                                <div class="terminal-title">neo-ai-console — bash — 80x24</div>
-                            </div>
-                            <div class="terminal-body" id="neoTerminalBody">
-                                <div class="terminal-output">
-                                    <div class="output-line matrix">NEO AI Console v2.1.0</div>
-                                    <div class="output-line matrix">Initializing advanced systems...</div>
-                                    <div class="output-line system">Loading persistent memory module</div>
-                                    <div class="output-line system">Model orchestration system active</div>
-                                    <div class="output-line system">Context-aware routing initialized</div>
-                                    <div class="output-line system">Reflection and learning systems online</div>
-                                    <div class="output-line success">System ready. Type 'help' for available commands.</div>
-                                </div>
-                                <div class="command-line">
-                                    <span class="prompt neo-prompt">user@neo:~$</span>
-                                    <input type="text" class="command-input" id="neoCommandInput" autofocus>
-                                    <span class="cursor neo-cursor"></span>
+            <div class="ai-models-container">
+                <!-- PATCH Section -->
+                <div class="ai-model-card patch-section">
+                    <!-- Video Section - Now on top -->
+                    <div class="model-video-section">
+                        <div class="model-video-full">
+                            <div class="video-container">
+                                <video id="patchVideo" controls>
+                                    <source src="PV.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="video-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <!-- Content Section - Now below video -->
+                    <div class="model-content-full">
+                        <h2><span class="accent">PATCH</span> AI Console</h2>
+                        <p>A lightweight, off-line AI console designed for developers and power users who need fast, responsive AI interactions without heavy resource requirements.</p>
+                        
+                        <div class="model-features-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Lightning Fast</h4>
+                                    <p>Optimized for minimal resource consumption with rapid response times.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-plug"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Cross-Platform</h4>
+                                    <p>Runs seamlessly on Windows, macOS, and Linux environments.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Privacy Focused</h4>
+                                    <p>All processing happens locally - your data never leaves your machine.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Developer Friendly</h4>
+                                    <p>Simple setup with clear documentation and easy customization.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="https://patch-ai-nerdspace-cr.vercel.app" target="_blank" class="cta-button">Visit PATCH Website</a>
                     </div>
                 </div>
-                
-                <!-- Content Section - Now below demo -->
-                <div class="model-content-full">
-                    <h2><span class="accent">NEO</span> AI Console</h2>
-                    <p>An advanced personal AI console with persistent memory, multi-model orchestration, and sophisticated reflection systems for complex AI interactions.</p>
-                    
-                    <div class="model-features-grid">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Multi-Model Orchestration</h4>
-                                <p>Intelligently routes tasks between specialized AI models based on context.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-memory"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Persistent Memory</h4>
-                                <p>Maintains comprehensive session memory with categorized storage.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-exchange-alt"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Context-Aware Routing</h4>
-                                <p>Automatically selects optimal AI model based on task requirements.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-sync"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Continuous Learning</h4>
-                                <p>Implements reflection mechanisms to improve responses over time.</p>
+
+                <!-- NEO Section -->
+                <div class="ai-model-card neo-section">
+                    <!-- Video Section - Now on top -->
+                    <div class="model-video-section">
+                        <div class="model-video-full">
+                            <div class="video-container">
+                                <video id="neoVideo" controls>
+                                    <source src="PV.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                <div class="video-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="https://neo-ai-nerdspace-cr.vercel.app" target="_blank" class="cta-button">Visit NEO Website</a>
+                    <!-- Content Section - Now below video -->
+                    <div class="model-content-full">
+                        <h2><span class="accent">NEO</span> AI Console</h2>
+                        <p>An advanced personal AI console with persistent memory, multi-model orchestration, and sophisticated reflection systems for complex AI interactions.</p>
+                        
+                        <div class="model-features-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Multi-Model Orchestration</h4>
+                                    <p>Intelligently routes tasks between specialized AI models based on context.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-memory"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Persistent Memory</h4>
+                                    <p>Maintains comprehensive session memory with categorized storage.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Context-Aware Routing</h4>
+                                    <p>Automatically selects optimal AI model based on task requirements.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-sync"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Continuous Learning</h4>
+                                    <p>Implements reflection mechanisms to improve responses over time.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="https://neo-ai-nerdspace-cr.vercel.app" target="_blank" class="cta-button">Visit NEO Website</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1579,8 +1463,7 @@
                 <div class="footer-column">
                     <h3>My AI Models</h3>
                     <ul class="footer-links">
-                        <li><a data-page="patch">PATCH AI Console</a></li>
-                        <li><a data-page="neo">NEO AI Console</a></li>
+                        <li><a data-page="ai-models">AI Models</a></li>
                         <li><a data-page="future">Future Projects</a></li>
                         <li><a href="#">Audio Engineering - Coming Soon!</a></li>
                     </ul>
@@ -1620,19 +1503,13 @@
                 title: "Welcome to NerdSpace!",
                 description: "A tech hub platform showcasing cutting-edge AI tools, frameworks, and implementations. Explore the future of personal AI assistants and development tools.",
                 buttonText: "Explore Models",
-                buttonPage: "home"
+                buttonPage: "ai-models"
             },
-            patch: {
-                title: "PATCH",
-                description: "A lightweight, efficient AI console designed for developers and power users who need fast, responsive AI interactions without heavy resource requirements.",
-                buttonText: "Visit PATCH Website",
-                buttonPage: "patch"
-            },
-            neo: {
-                title: "NEO",
-                description: "An advanced personal AI console with persistent memory, multi-model orchestration, and sophisticated reflection systems for complex AI interactions.",
-                buttonText: "Visit NEO Website",
-                buttonPage: "neo"
+            "ai-models": {
+                title: "AI Models",
+                description: "Explore our collection of AI implementations, each designed for specific use cases and optimized for performance.",
+                buttonText: "Explore Models",
+                buttonPage: "ai-models"
             },
             future: {
                 title: "Future Projects & Roadmap",
@@ -1659,6 +1536,10 @@
             const homeLink = document.getElementById('home-link');
             const mobileMenu = document.querySelector('.mobile-menu');
             const mobileDropdown = document.querySelector('.mobile-dropdown');
+            
+            // Video elements
+            const patchVideo = document.getElementById('patchVideo');
+            const neoVideo = document.getElementById('neoVideo');
             
             // Show home page by default
             showPage('home');
@@ -1715,6 +1596,27 @@
                 }
             });
             
+            // Video play/pause functionality
+            document.querySelectorAll('.video-overlay').forEach(overlay => {
+                overlay.addEventListener('click', function() {
+                    const video = this.previousElementSibling;
+                    if (video.paused) {
+                        video.play();
+                        this.style.opacity = '0';
+                    } else {
+                        video.pause();
+                        this.style.opacity = '1';
+                    }
+                });
+            });
+            
+            // Reset video overlays when videos end
+            document.querySelectorAll('video').forEach(video => {
+                video.addEventListener('ended', function() {
+                    this.nextElementSibling.style.opacity = '1';
+                });
+            });
+            
             function navigateToPage(pageId) {
                 // Update active nav link
                 navLinks.forEach(nav => nav.classList.remove('active'));
@@ -1761,268 +1663,6 @@
                     }, 300);
                 }
             }
-            
-            // PATCH Terminal Demo
-            const patchTerminalBody = document.getElementById('patchTerminalBody');
-            const patchCommandInput = document.getElementById('patchCommandInput');
-            
-            // Command history and responses for PATCH
-            const patchCommands = {
-                'help': `Available commands:
-  help - Show this help message
-  about - Information about Patch AI
-  models - List available AI models
-  memory - Show memory system info
-  clear - Clear the terminal
-  exit - Exit the console (in desktop version)`,
-                
-                'about': `Patch AI Console v1.0.3
-A lightweight, efficient AI console for developers.
-  
-Features:
-  - Multi-model AI support (TinyLlama, SmollM2, DeepSeek)
-  - Session memory with categorization
-  - Cross-platform compatibility
-  - Minimal resource consumption
-  - Privacy-focused local processing`,
-                
-                'models': `Available AI Models:
-  
-1. TinyLlama (default)
-   - Fast and lightweight
-   - Perfect for everyday tasks
-   - Low resource requirements
-  
-2. SmollM2
-   - Balanced performance
-   - Good for general purpose use
-   - Moderate resource usage
-  
-3. DeepSeek
-   - Advanced reasoning capabilities
-   - Best for complex tasks
-   - Higher resource requirements`,
-                
-                'memory': `Memory System:
-  
-Patch maintains conversation context with categorized memory:
-  
-  [MOOD] - Emotional state and preferences
-  [GOAL] - Current objectives and tasks
-  [NOTE] - Important information and facts
-  [FEEDBACK] - System performance notes
-  [REFLECTION] - Learning and improvement insights
-  
-Type 'memory view' to see current session memory.`,
-                
-                'memory view': `Current Session Memory:
-  
-[GOAL] Demonstrate Patch AI Console capabilities
-[NOTE] User is interacting with web demo version
-[REFLECTION] System responding well to command inputs`,
-                
-                'clear': '', // Special case - handled separately
-                
-                'exit': 'This is a web demo. In the desktop version, this would exit the console.',
-                
-                '': '' // Handle empty input
-            };
-            
-            // Default response for unknown commands
-            const patchDefaultResponse = "Command not recognized. Type 'help' for available commands.";
-            
-            // Function to add output to PATCH terminal
-            function addPatchOutput(text, className = '') {
-                const outputLine = document.createElement('div');
-                outputLine.className = `output-line ${className}`;
-                outputLine.textContent = text;
-                patchTerminalBody.insertBefore(outputLine, patchTerminalBody.lastElementChild);
-                patchTerminalBody.scrollTop = patchTerminalBody.scrollHeight;
-            }
-            
-            // Function to process PATCH commands
-            function processPatchCommand(command) {
-                // Show the command that was entered
-                addPatchOutput(`user@patch:~$ ${command}`);
-                
-                // Process special commands
-                if (command === 'clear') {
-                    // Clear terminal except the last command line
-                    const outputLines = patchTerminalBody.querySelectorAll('.output-line');
-                    outputLines.forEach(line => line.remove());
-                    return;
-                }
-                
-                // Get response or use default
-                const response = patchCommands[command.toLowerCase()] || patchDefaultResponse;
-                
-                // Add response to terminal
-                if (response) {
-                    // Split response by lines and add each separately
-                    response.split('\n').forEach(line => {
-                        addPatchOutput(line);
-                    });
-                }
-            }
-            
-            // Handle PATCH command input
-            patchCommandInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    const command = patchCommandInput.value.trim();
-                    if (command) {
-                        processPatchCommand(command);
-                    }
-                    patchCommandInput.value = '';
-                }
-            });
-            
-            // Focus on PATCH input when clicking anywhere in terminal
-            patchTerminalBody.addEventListener('click', function() {
-                patchCommandInput.focus();
-            });
-
-            // NEO Terminal Demo
-            const neoTerminalBody = document.getElementById('neoTerminalBody');
-            const neoCommandInput = document.getElementById('neoCommandInput');
-            
-            // Available commands and responses for NEO
-            const neoCommands = {
-                'help': `Available commands:
-  help - Show this help message
-  about - Information about NEO AI
-  models - List available AI models
-  memory - Show memory system info
-  status - Display system status
-  reflect - Show reflection insights
-  clear - Clear the terminal
-  exit - Exit the console (in desktop version)`,
-                
-                'about': `NEO AI Console v2.1.0
-An advanced personal AI console with sophisticated capabilities.
-  
-Advanced Features:
-  - Multi-model AI orchestration (smollm2, deepseek-r1)
-  - Persistent memory with categorization
-  - Context-aware model routing
-  - Continuous learning and reflection systems
-  - Cross-platform synchronization
-  - Matrix-themed interface`,
-                
-                'models': `AI Model Orchestration:
-  
-1. SmollM2 (Conversational Specialist)
-   - Optimized for natural dialogue
-   - Emotional intelligence capabilities
-   - Engaging interaction patterns
-  
-2. DeepSeek-R1 (Analytical Specialist)
-   - Advanced reasoning capabilities
-   - Technical problem-solving
-   - Complex analysis tasks
-  
-3. Dynamic Model Selection
-   - Automatic routing based on task type
-   - Context-aware model switching
-   - Performance optimization`,
-                
-                'memory': `Advanced Memory System:
-  
-NEO maintains comprehensive context with categorized memory:
-  
-  [MOOD] - Emotional state tracking and preference learning
-  [GOAL] - Current objectives, tasks, and progress tracking
-  [NOTE] - Important information, facts, and user preferences
-  [FEEDBACK] - System performance metrics and improvement areas
-  [REFLECTION] - Learning insights and adaptive behavior patterns
-  
-Type 'memory view' to see current session memory.`,
-                
-                'memory view': `Current Session Memory:
-  
-[GOAL] Demonstrate NEO AI Console advanced capabilities
-[NOTE] User is interacting with web demo version
-[FEEDBACK] System responding effectively to command inputs
-[REFLECTION] Web interface provides good simulation of desktop experience`,
-                
-                'status': `System Status:
-  
-  Memory Module: ONLINE
-  Model Orchestration: ACTIVE
-  Context Routing: OPERATIONAL
-  Reflection Systems: ENGAGED
-  Learning Protocols: ACTIVE
-  
-All systems functioning at optimal capacity.`,
-                
-                'reflect': `Reflection Insights:
-  
-Current session analysis indicates:
-  - User is exploring system capabilities
-  - Command patterns suggest technical proficiency
-  - Interaction style favors direct commands
-  - System adapting to user preferences
-  
-Learning systems actively updating interaction models.`,
-                
-                'clear': '', // Special case - handled separately
-                
-                'exit': 'This is a web demo. In the desktop version, this would exit the console.',
-                
-                '': '' // Handle empty input
-            };
-            
-            // Default response for unknown commands
-            const neoDefaultResponse = "Command not recognized. Type 'help' for available commands.";
-            
-            // Function to add output to NEO terminal
-            function addNeoOutput(text, className = '') {
-                const outputLine = document.createElement('div');
-                outputLine.className = `output-line ${className}`;
-                outputLine.textContent = text;
-                neoTerminalBody.insertBefore(outputLine, neoTerminalBody.lastElementChild);
-                neoTerminalBody.scrollTop = neoTerminalBody.scrollHeight;
-            }
-            
-            // Function to process NEO commands
-            function processNeoCommand(command) {
-                // Show the command that was entered
-                addNeoOutput(`user@neo:~$ ${command}`);
-                
-                // Process special commands
-                if (command === 'clear') {
-                    // Clear terminal except the last command line
-                    const outputLines = neoTerminalBody.querySelectorAll('.output-line');
-                    outputLines.forEach(line => line.remove());
-                    return;
-                }
-                
-                // Get response or use default
-                const response = neoCommands[command.toLowerCase()] || neoDefaultResponse;
-                
-                // Add response to terminal
-                if (response) {
-                    // Split response by lines and add each separately
-                    response.split('\n').forEach(line => {
-                        addNeoOutput(line);
-                    });
-                }
-            }
-            
-            // Handle NEO command input
-            neoCommandInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    const command = neoCommandInput.value.trim();
-                    if (command) {
-                        processNeoCommand(command);
-                    }
-                    neoCommandInput.value = '';
-                }
-            });
-            
-            // Focus on NEO input when clicking anywhere in terminal
-            neoTerminalBody.addEventListener('click', function() {
-                neoCommandInput.focus();
-            });
         });
     </script>
 </body>
