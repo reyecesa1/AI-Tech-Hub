@@ -223,6 +223,25 @@
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: -1;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: 
                 radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.2) 0%, transparent 40%);
@@ -344,16 +363,17 @@
         .carousel-image {
             width: 100%;
             height: 180px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            overflow: hidden;
         }
 
-        .carousel-image i {
-            font-size: 3rem;
-            color: white;
+        .carousel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .carousel-content {
@@ -1041,7 +1061,13 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <div class="hero-background"></div>
+        <div class="hero-background">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="tech.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
                 <h1>Welcome to NerdSpace</h1>
@@ -1079,7 +1105,7 @@
                     <div class="carousel-item">
                         <a href="https://resume-assistant-chatbot.vercel.app" target="_blank" class="carousel-link">
                             <div class="carousel-image">
-                                <i class="fas fa-file-alt"></i>
+                                <img src="chatbot.png" alt="Resume Assistant">
                             </div>
                             <div class="carousel-content">
                                 <h3>Resume Assistant</h3>
@@ -1092,7 +1118,7 @@
                     <div class="carousel-item">
                         <a href="https://swiftsiteonline.vercel.app" target="_blank" class="carousel-link">
                             <div class="carousel-image">
-                                <i class="fas fa-bolt"></i>
+                                <img src="Swift2.png" alt="SwiftSite">
                             </div>
                             <div class="carousel-content">
                                 <h3>SwiftSite</h3>
@@ -1131,7 +1157,7 @@
                     <div class="carousel-item">
                         <a href="https://the-little-hiker.vercel.app" target="_blank" class="carousel-link">
                             <div class="carousel-image">
-                                <i class="fas fa-hiking"></i>
+                                <img src="TLH.png" alt="The Little Hiker">
                             </div>
                             <div class="carousel-content">
                                 <h3>The Little Hiker</h3>
@@ -1144,7 +1170,7 @@
                     <div class="carousel-item">
                         <a href="https://the-little-astronaut.vercel.app" target="_blank" class="carousel-link">
                             <div class="carousel-image">
-                                <i class="fas fa-rocket"></i>
+                                <img src="TLA.png" alt="The Little Astronaut">
                             </div>
                             <div class="carousel-content">
                                 <h3>The Little Astronaut</h3>
@@ -1170,7 +1196,7 @@
                     <div class="carousel-item">
                         <a href="https://artisan-gems-the-woodlands-tx.vercel.app" target="_blank" class="carousel-link">
                             <div class="carousel-image">
-                                <i class="fas fa-gem"></i>
+                                <img src="artisan.png" alt="Artisan Gems">
                             </div>
                             <div class="carousel-content">
                                 <h3>Artisan Gems</h3>
@@ -1183,7 +1209,7 @@
                     <div class="carousel-item">
                         <a href="https://natinails.vercel.app" target="_blank" class="carousel-link">
                             <div class="carousel-image">
-                                <i class="fas fa-spa"></i>
+                                <img src="nati2.png" alt="Nati Nails">
                             </div>
                             <div class="carousel-content">
                                 <h3>Nati Nails</h3>
@@ -1196,7 +1222,7 @@
                     <div class="carousel-item">
                         <a href="https://nerdspace-hub-cr.vercel.app" target="_blank" class="carousel-link">
                             <div class="carousel-image">
-                                <i class="fas fa-brain"></i>
+                                <img src="NerdSpace.png" alt="NerdSpace">
                             </div>
                             <div class="carousel-content">
                                 <h3>NerdSpace</h3>
