@@ -319,10 +319,40 @@
             background: rgba(255, 255, 255, 0.25);
         }
 
-        /* All Projects Carousel Section - UPDATED - Now below Hero */
+        /* All Projects Carousel Section - UPDATED with Stars Video Background */
         .all-projects {
             padding: 80px 0;
-            background: rgba(15, 15, 35, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .all-projects-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .all-projects-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+        }
+
+        .all-projects-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 15, 35, 0.7);
+            z-index: -1;
         }
 
         .carousel-container {
@@ -1084,6 +1114,13 @@
 
     <!-- All Projects Carousel Section - MOVED TO BELOW HERO -->
     <section id="all-projects" class="all-projects">
+        <div class="all-projects-background">
+            <video class="all-projects-video" autoplay muted loop playsinline>
+                <source src="stars.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="all-projects-overlay"></div>
+        </div>
         <div class="container">
             <h2 class="section-title">All Projects</h2>
             <p style="text-align: center; margin-bottom: 50px; font-size: 1.2rem; color: var(--text-light);">Explore my complete portfolio of projects, websites, and applications.</p>
