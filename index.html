@@ -183,20 +183,20 @@
             color: #000;
         }
 
-        /* Alternating layout */
-        .section-odd .content-half {
+        /* FIXED: Alternating layout */
+        .section-left .content-half {
             order: 1;
         }
 
-        .section-odd .image-half {
+        .section-left .image-half {
             order: 2;
         }
 
-        .section-even .content-half {
+        .section-right .content-half {
             order: 2;
         }
 
-        .section-even .image-half {
+        .section-right .image-half {
             order: 1;
         }
 
@@ -261,14 +261,12 @@
                 font-size: 2.5rem;
             }
             
-            .section-odd .content-half,
-            .section-even .content-half {
-                order: 1;
-            }
-            
-            .section-odd .image-half,
-            .section-even .image-half {
-                order: 2;
+            /* Reset order for mobile */
+            .section-left .content-half,
+            .section-right .content-half,
+            .section-left .image-half,
+            .section-right .image-half {
+                order: initial;
             }
         }
 
@@ -315,8 +313,8 @@
 
     <!-- Project Sections -->
     <div id="projects">
-        <!-- Portfolio -->
-        <section class="showcase-section section-odd">
+        <!-- Portfolio - LEFT -->
+        <section class="showcase-section section-left">
             <div class="container">
                 <div class="content-half">
                     <h2 class="content-title">Portfolio</h2>
@@ -334,8 +332,8 @@
             </div>
         </section>
 
-        <!-- Resume Assistant -->
-        <section class="showcase-section section-even">
+        <!-- Resume Assistant - RIGHT -->
+        <section class="showcase-section section-right">
             <div class="container">
                 <div class="content-half">
                     <h2 class="content-title">Resume Assistant</h2>
@@ -353,8 +351,8 @@
             </div>
         </section>
 
-        <!-- SwiftSite -->
-        <section class="showcase-section section-odd">
+        <!-- SwiftSite - LEFT -->
+        <section class="showcase-section section-left">
             <div class="container">
                 <div class="content-half">
                     <h2 class="content-title">SwiftSite</h2>
@@ -372,8 +370,8 @@
             </div>
         </section>
 
-        <!-- NEO AI -->
-        <section class="showcase-section section-even">
+        <!-- NEO AI - RIGHT -->
+        <section class="showcase-section section-right">
             <div class="container">
                 <div class="content-half">
                     <h2 class="content-title">NEO AI Console</h2>
@@ -391,8 +389,8 @@
             </div>
         </section>
 
-        <!-- PATCH AI -->
-        <section class="showcase-section section-odd">
+        <!-- PATCH AI - LEFT -->
+        <section class="showcase-section section-left">
             <div class="container">
                 <div class="content-half">
                     <h2 class="content-title">PATCH AI Console</h2>
@@ -410,8 +408,8 @@
             </div>
         </section>
 
-        <!-- The Little Hiker -->
-        <section class="showcase-section section-even">
+        <!-- The Little Hiker - RIGHT -->
+        <section class="showcase-section section-right">
             <div class="container">
                 <div class="content-half">
                     <h2 class="content-title">The Little Hiker</h2>
@@ -429,8 +427,8 @@
             </div>
         </section>
 
-        <!-- The Little Astronaut -->
-        <section class="showcase-section section-odd">
+        <!-- The Little Astronaut - LEFT -->
+        <section class="showcase-section section-left">
             <div class="container">
                 <div class="content-half">
                     <h2 class="content-title">The Little Astronaut</h2>
@@ -448,8 +446,8 @@
             </div>
         </section>
 
-        <!-- Cold2Close -->
-        <section class="showcase-section section-even">
+        <!-- Cold2Close - RIGHT -->
+        <section class="showcase-section section-right">
             <div class="container">
                 <div class="content-half">
                     <h2 class="content-title">Cold2Close</h2>
@@ -467,8 +465,8 @@
             </div>
         </section>
 
-        <!-- Artisan Gems -->
-        <section class="showcase-section section-odd">
+        <!-- Artisan Gems - LEFT -->
+        <section class="showcase-section section-left">
             <div class="container">
                 <div class="content-half">
                     <h2 class="content-title">Artisan Gems</h2>
@@ -486,8 +484,8 @@
             </div>
         </section>
 
-        <!-- Nati Nails -->
-        <section class="showcase-section section-even">
+        <!-- Nati Nails - RIGHT -->
+        <section class="showcase-section section-right">
             <div class="container">
                 <div class="content-half">
                     <h2 class="content-title">Nati Nails</h2>
@@ -505,8 +503,8 @@
             </div>
         </section>
 
-        <!-- NerdSpace -->
-        <section class="showcase-section section-odd">
+        <!-- NerdSpace - LEFT -->
+        <section class="showcase-section section-left">
             <div class="container">
                 <div class="content-half">
                     <h2 class="content-title">NerdSpace</h2>
