@@ -3,346 +3,525 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NerdSpace | Cesar's Tech Hub — Categorized Showcase</title>
+    <title>NerdSpace | Cesar's Tech Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Refined fonts: Playfair for headings, Lato for body (book-like) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ----- ORIGINAL GLOBAL STYLES (PRESERVED) ----- */
+        /* ----- EXECUTIVE / BOOK-LIKE STYLING ----- */
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #10b981;
+            --primary: #2c3e66;
+            --primary-dark: #1e2a47;
             --accent: #8b5cf6;
-            --bg: #0f0f23;
-            --bg-light: rgba(35, 35, 60, 0.8);
-            --bg-lighter: rgba(50, 50, 80, 0.6);
-            --text: #f1f5f9;
-            --text-light: #cbd5e1;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            --patch: #8bc34a;
-            --neo: #9c27b0;
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.15);
-            --glass-shadow: rgba(0, 0, 0, 0.2);
-            --card-bg: rgba(30, 30, 50, 0.7);
+            --bg: #f8f9fc;
+            --bg-light: #ffffff;
+            --text: #1e293b;
+            --text-light: #475569;
+            --border-light: #e2e8f0;
+            --card-bg: #ffffff;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.03), 0 1px 6px -1px rgba(0,0,0,0.02);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.03), 0 2px 4px rgba(0,0,0,0.02);
+            --transition: all 0.2s ease;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background: linear-gradient(135deg, #0f0f23 0%, #050517 100%);
+            background: var(--bg);
             color: var(--text);
-            min-height: 100vh;
-            line-height: 1.6;
-            overflow-x: hidden;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Lato', sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
         }
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
-            z-index: -2;
-        }
-        .code-font { font-family: 'Source Code Pro', monospace; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* HEADER (larger, sticky) */
+        /* headings use serif for elegance */
+        h1, h2, h3, h4, .logo, .section-title, .category h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header - refined, lighter */
         header {
-            background: rgba(15, 15, 35, 0.95);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            padding: 15px 0;
+            padding: 12px 0;
         }
+
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
         }
+
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
+            font-size: 1.25rem;
+            font-weight: 600;
             color: var(--primary);
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.8rem;
-            cursor: pointer;
+            letter-spacing: -0.3px;
         }
-        .logo-icon { font-size: 32px; }
-        .nav-links { display: flex; list-style: none; gap: 30px; }
+
+        .logo-icon {
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
         .nav-links a {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             color: var(--text);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            font-size: 1.1rem;
-            cursor: pointer;
+            transition: var(--transition);
         }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
         }
-        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
         .mobile-menu {
             display: none;
-            font-size: 1.8rem;
+            font-size: 1.2rem;
             cursor: pointer;
-            padding: 8px;
         }
+
         .mobile-dropdown {
             display: none;
             position: absolute;
-            top: 100%;
-            right: 0;
-            width: 220px;
-            background: rgba(15, 15, 35, 0.95);
-            backdrop-filter: blur(15px);
-            border-radius: 8px;
-            overflow: hidden;
+            top: 60px;
+            right: 20px;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
             z-index: 1001;
         }
-        .mobile-dropdown.active { display: block; }
-        .mobile-dropdown a {
-            display: block;
-            padding: 15px 20px;
-            color: var(--text);
-            font-weight: 500;
-            transition: 0.2s;
-        }
-        .mobile-dropdown a:hover { background: rgba(99, 102, 241, 0.2); color: var(--primary); }
 
-        /* HERO SECTION (unchanged) */
+        /* Hero – reduced height, refined overlay */
         .hero-section {
             position: relative;
-            height: 100vh;
+            height: 75vh;
+            min-height: 500px;
             display: flex;
             align-items: center;
-            padding-top: 100px;
-            overflow: hidden;
+            margin-top: 58px;
         }
-        .hero-background { position: absolute; inset: 0; z-index: -1; }
-        .hero-video { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+
         .hero-overlay {
-            position: absolute; inset: 0;
-            background: radial-gradient(circle at 10% 20%, rgba(99,102,241,0.2) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 80%, rgba(139,92,246,0.2) 0%, transparent 40%);
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.2);
+            z-index: -1;
         }
+
         .hero-content {
-            max-width: 800px;
+            max-width: 680px;
             margin: 0 auto;
             text-align: center;
-            animation: fadeInUp 0.8s ease;
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .hero-content p { font-size: 1.25rem; margin-bottom: 40px; color: rgba(255,255,255,0.9); }
-        .hero-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(99,102,241,0.3);
-        }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(99,102,241,0.5); }
-        .secondary-button { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); }
-        .secondary-button:hover { background: rgba(255,255,255,0.25); }
 
-        /* SECTION STYLES (category reveal) */
-        .category-section {
-            padding: 90px 0;
-            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
-            opacity: 0;
-            transform: translateY(35px);
-        }
-        .category-section.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.7rem;
-            margin-bottom: 20px;
+        .hero-content h1 {
+            font-size: 2.8rem;
             font-weight: 600;
-            position: relative;
+            color: #1e293b;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
         }
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 3px;
-        }
-        .section-subhead {
-            text-align: center;
-            color: var(--text-light);
-            font-size: 1.2rem;
-            margin-bottom: 50px;
-            max-width: 700px;
+
+        .hero-content p {
+            font-size: 1rem;
+            color: #334155;
+            margin-bottom: 28px;
+            max-width: 540px;
             margin-left: auto;
             margin-right: auto;
         }
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-            gap: 35px;
-        }
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.15);
-            transition: all 0.3s ease;
+
+        .hero-buttons {
             display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        .card:hover { transform: translateY(-8px); border-color: rgba(99,102,241,0.5); box-shadow: 0 20px 35px rgba(0,0,0,0.3); }
-        .card-header {
-            padding: 25px 25px 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .card-icon {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
+            gap: 12px;
             justify-content: center;
-            overflow: hidden;
-            background: rgba(99,102,241,0.2);
         }
-        .card-icon img { width: 100%; height: 100%; object-fit: cover; }
-        .card-info h3 { font-size: 1.5rem; margin-bottom: 5px; }
-        .card-info p { color: var(--text-light); font-size: 0.9rem; }
-        .card-body { padding: 20px 25px; flex-grow: 1; }
-        .card-features { list-style: none; margin-bottom: 15px; }
-        .card-features li { margin-bottom: 10px; display: flex; gap: 10px; align-items: center; }
-        .card-features li i { color: var(--success); }
-        .card-footer { padding: 15px 25px 25px; border-top: 1px solid rgba(255,255,255,0.1); }
-        .card-link {
-            display: block;
-            text-align: center;
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: 600;
-            background: rgba(99,102,241,0.2);
-            color: var(--primary);
-            text-decoration: none;
-            transition: 0.2s;
-        }
-        .card-link:hover { background: var(--primary); color: white; }
-        .video-preview {
-            border-radius: 14px;
-            overflow: hidden;
-            cursor: pointer;
-            margin-top: 15px;
-            position: relative;
-        }
-        .video-preview video { width: 100%; display: block; border-radius: 12px; }
-        .expand-text { font-size: 0.75rem; text-align: center; margin-top: 8px; color: var(--text-light); }
-        .coming-soon {
-            background: rgba(139,92,246,0.2);
-            padding: 8px 16px;
-            border-radius: 30px;
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 40px;
             font-size: 0.8rem;
             font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button.secondary-button {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Section common */
+        .section {
+            padding: 64px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            letter-spacing: -0.3px;
+            color: #0f172a;
+        }
+
+        .section-title:after {
+            display: none;
+        }
+
+        /* Category headings */
+        .category {
+            margin-bottom: 48px;
+        }
+
+        .category h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-light);
             display: inline-block;
+            letter-spacing: -0.2px;
         }
-        /* studies card specific */
-        .studies-card .card-icon { background: rgba(16,185,129,0.2); }
-        .footer-content, .social-links, .footer-bottom { /* preserve footer style */ }
+
+        /* Instagram-style grid – smaller, elegant tiles */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-item {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            background-size: cover;
+            background-position: center;
+            background-color: #f1f5f9;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .grid-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-md);
+        }
+
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 16px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            color: var(--text);
+        }
+
+        .grid-item:hover .grid-overlay {
+            opacity: 1;
+        }
+
+        .grid-overlay h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .grid-overlay p {
+            font-size: 0.7rem;
+            margin-bottom: 12px;
+            color: #475569;
+        }
+
+        .project-link {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .project-link:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Future projects cards – more compact */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-header {
+            padding: 20px 20px 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eef2ff;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .card-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .card-info p {
+            font-size: 0.7rem;
+            color: var(--text-light);
+        }
+
+        .card-body {
+            padding: 0 20px 20px;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 12px;
+        }
+
+        .card-features li {
+            font-size: 0.75rem;
+            margin-bottom: 6px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .card-features i {
+            color: var(--primary);
+            font-size: 0.7rem;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            color: var(--primary);
+        }
+
+        /* Contact section */
+        .contact-grid {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .contact-form {
+            flex: 1;
+            background: white;
+            padding: 28px;
+            border-radius: 20px;
+            border: 1px solid var(--border-light);
+        }
+
+        .contact-form input, .contact-form select, .contact-form textarea {
+            width: 100%;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.85rem;
+            background: white;
+        }
+
+        /* Footer */
         footer {
-            padding: 60px 0 30px;
-            border-top: 1px solid rgba(99,102,241,0.2);
+            background: white;
+            padding: 48px 0 24px;
+            border-top: 1px solid var(--border-light);
         }
+
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
         }
-        .footer-column { background: var(--card-bg); backdrop-filter: blur(15px); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); }
-        .footer-column h3 { color: var(--primary); margin-bottom: 20px; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: var(--text-light); text-decoration: none; transition: 0.2s; }
-        .footer-links a:hover { color: var(--primary); }
-        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+
+        .footer-column h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
         .social-link {
-            width: 40px; height: 40px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            background: rgba(99,102,241,0.2);
+            background: #f1f5f9;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            transition: 0.2s;
+            transition: var(--transition);
         }
-        .social-link:hover { background: var(--primary); color: white; transform: translateY(-3px); }
-        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-light); }
-        /* video modal */
-        .video-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-light);
+            padding-top: 24px;
+            border-top: 1px solid var(--border-light);
         }
-        .video-modal.active { display: flex; }
-        .modal-content { max-width: 900px; width: 90%; position: relative; }
-        .close-modal {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-        .modal-video video { width: 100%; border-radius: 16px; }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-menu { display: block; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .category-section { padding: 60px 0; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-section { height: 60vh; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+            .section { padding: 48px 0; }
+            .container { padding: 0 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .grid { gap: 12px; }
+            .grid-overlay h4 { font-size: 0.85rem; }
+            .grid-overlay p { font-size: 0.6rem; }
         }
     </style>
 </head>
@@ -351,37 +530,27 @@
         <div class="container header-container">
             <a class="logo" id="home-link">
                 <div class="logo-icon"><i class="fas fa-brain"></i></div>
-                <div>NerdSpace.CR</div>
+                <div>NerdSpace</div>
             </a>
             <ul class="nav-links">
-                <li><a class="nav-link" href="#home">Home</a></li>
-                <li><a class="nav-link" href="#business">Business</a></li>
-                <li><a class="nav-link" href="#studies">Studies</a></li>
-                <li><a class="nav-link" href="#ai-models">AI Models</a></li>
-                <li><a class="nav-link" href="#games">Games</a></li>
-                <li><a class="nav-link" href="#creative">Workflows</a></li>
-                <li><a class="nav-link" href="#future">Future</a></li>
-                <li><a class="nav-link" href="#contact">Contact</a></li>
+                <li><a class="nav-link active" href="#home">Home</a></li>
+                <li><a href="#all-projects">Projects</a></li>
+                <li><a href="#future">Future</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu">
                 <i class="fas fa-bars"></i>
                 <div class="mobile-dropdown">
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#business">Business</a></li>
-                        <li><a href="#studies">Studies</a></li>
-                        <li><a href="#ai-models">AI Models</a></li>
-                        <li><a href="#games">Games</a></li>
-                        <li><a href="#creative">Workflows</a></li>
-                        <li><a href="#future">Future</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+                    <a href="#home">Home</a>
+                    <a href="#all-projects">Projects</a>
+                    <a href="#future">Future</a>
+                    <a href="#contact">Contact</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero unchanged -->
+    <!-- Hero (same video, refined) -->
     <section id="home" class="hero-section">
         <div class="hero-background">
             <video class="hero-video" autoplay muted loop playsinline>
@@ -391,213 +560,139 @@
         </div>
         <div class="container">
             <div class="hero-content">
-                <h1>Welcome to NerdSpace</h1>
-                <p>My personal tech hub showcasing AI tools, frameworks, games, and creative ventures. Explore categories as you scroll.</p>
+                <h1>Cesar's Tech Hub</h1>
+                <p>Curated projects in AI, business tools, games, and digital craftsmanship.</p>
                 <div class="hero-buttons">
-                    <a href="#business" class="cta-button">Discover Categories</a>
+                    <a href="#all-projects" class="cta-button">Explore Work</a>
                     <a href="https://cr-about-me.vercel.app" target="_blank" class="cta-button secondary-button">About Me</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== BUSINESS CATEGORY ========== -->
-    <section id="business" class="category-section">
+    <!-- Instagram-style categorized grid (smaller, cleaner) -->
+    <section id="all-projects" class="section">
         <div class="container">
-            <h2 class="section-title">💼 Business</h2>
-            <div class="section-subhead">Professional tools, startup platforms & client solutions</div>
-            <div class="cards-grid">
-                <!-- About Me -->
-                <div class="card">
-                    <div class="card-header"><div class="card-icon"><img src="Me.png" alt="about"></div><div class="card-info"><h3>About Me</h3><p>Personal portfolio & experience</p></div></div>
-                    <div class="card-body"><p>Interactive resume and professional journey. Explore my background, skills, and career highlights.</p></div>
-                    <div class="card-footer"><a href="https://cr-about-me.vercel.app" target="_blank" class="card-link">Visit Portfolio →</a></div>
+            <h2 class="section-title">All Projects</h2>
+            
+            <div class="category">
+                <h3><i class="fas fa-briefcase" style="margin-right: 8px;"></i> Business</h3>
+                <div class="grid">
+                    <div class="grid-item" style="background-image: url('Swift2.png');"><div class="grid-overlay"><h4>SwiftSite</h4><p>Rapid dev startup</p><a href="https://swiftsiteonline.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
+                    <div class="grid-item" style="background-image: url('Call me.png');"><div class="grid-overlay"><h4>Cold2Close</h4><p>AI cold calling</p><a href="https://cold-2-close.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
+                    <div class="grid-item" style="background-image: url('artisan.png');"><div class="grid-overlay"><h4>Artisan Gems</h4><p>Jewelry website</p><a href="https://artisan-gems-the-woodlands-tx.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
+                    <div class="grid-item" style="background-image: url('nati2.png');"><div class="grid-overlay"><h4>Nati Nails</h4><p>Salon startup</p><a href="https://natinails.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
                 </div>
-                <!-- Resume Assistant -->
-                <div class="card">
-                    <div class="card-header"><div class="card-icon"><img src="chatbot.png" alt="resume"></div><div class="card-info"><h3>Resume Assistant</h3><p>AI chatbot for CV optimization</p></div></div>
-                    <div class="card-body"><p>AI-powered assistant that helps craft standout resumes and cover letters.</p></div>
-                    <div class="card-footer"><a href="https://resume-assistant-chatbot.vercel.app" target="_blank" class="card-link">Try Assistant →</a></div>
+            </div>
+
+            <div class="category">
+                <h3><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i> Studies (New)</h3>
+                <div class="grid">
+                    <div class="grid-item" style="background-image: url('chatbot.png');"><div class="grid-overlay"><h4>Resume Assistant</h4><p>AI chatbot</p><a href="https://resume-assistant-chatbot.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
                 </div>
-                <!-- SwiftSite -->
-                <div class="card">
-                    <div class="card-header"><div class="card-icon"><img src="Swift2.png" alt="swiftsite"></div><div class="card-info"><h3>SwiftSite</h3><p>Startup: rapid web deployment</p></div></div>
-                    <div class="card-body"><p>Platform for lightning-fast website development and scalable hosting.</p></div>
-                    <div class="card-footer"><a href="https://swiftsiteonline.vercel.app" target="_blank" class="card-link">Explore SwiftSite →</a></div>
+            </div>
+
+            <div class="category">
+                <h3><i class="fas fa-microchip" style="margin-right: 8px;"></i> AI Models</h3>
+                <div class="grid">
+                    <div class="grid-item" style="background-image: url('patch.png');"><div class="grid-overlay"><h4>PATCH AI</h4><p>Lightweight console</p><a href="https://patch-ai-nerdspace-cr.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
+                    <div class="grid-item" style="background-image: url('neo.png');"><div class="grid-overlay"><h4>NEO AI</h4><p>Multi‑model orchestration</p><a href="https://neo-ai-nerdspace-cr.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
+                </div>
+            </div>
+
+            <div class="category">
+                <h3><i class="fas fa-gamepad" style="margin-right: 8px;"></i> Games</h3>
+                <div class="grid">
+                    <div class="grid-item" style="background-image: url('TLH.png');"><div class="grid-overlay"><h4>The Little Hiker</h4><p>Adventure game</p><a href="https://the-little-hiker.vercel.app" target="_blank" class="project-link">Play</a></div></div>
+                    <div class="grid-item" style="background-image: url('TLA.png');"><div class="grid-overlay"><h4>The Little Astronaut</h4><p>Space exploration</p><a href="https://the-little-astronaut.vercel.app" target="_blank" class="project-link">Play</a></div></div>
+                </div>
+            </div>
+
+            <div class="category">
+                <h3><i class="fas fa-ellipsis-h" style="margin-right: 8px;"></i> Other Projects</h3>
+                <div class="grid">
+                    <div class="grid-item" style="background-image: url('Me.png');"><div class="grid-overlay"><h4>Portfolio</h4><p>About me</p><a href="https://cr-about-me.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
+                    <div class="grid-item" style="background-image: url('NerdSpace.png');"><div class="grid-overlay"><h4>NerdSpace Hub</h4><p>Original hub</p><a href="https://nerdspace-hub-cr.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== STUDIES CATEGORY ========== -->
-    <section id="studies" class="category-section">
+    <!-- Future Projects -->
+    <section id="future" class="section">
         <div class="container">
-            <h2 class="section-title">📚 Studies</h2>
-            <div class="section-subhead">Current academic & learning journey — building my new website</div>
-            <div class="cards-grid">
-                <div class="card studies-card">
-                    <div class="card-header"><div class="card-icon"><i class="fas fa-graduation-cap" style="font-size: 28px;"></i></div><div class="card-info"><h3>Web Dev Intensive</h3><p>Portfolio in progress</p></div></div>
-                    <div class="card-body"><p>Currently developing a comprehensive educational website to showcase full-stack projects, interactive tutorials, and case studies. Launching soon: a hub for learning modern web technologies.</p><div style="margin-top: 15px;"><span class="coming-soon">✨ Under active development</span></div></div>
-                    <div class="card-footer"><span class="coming-soon">In progress — check back</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== AI MODELS CATEGORY ========== (NEO & PATCH preserved with video previews) -->
-    <section id="ai-models" class="category-section">
-        <div class="container">
-            <h2 class="section-title">🤖 AI Models</h2>
-            <div class="section-subhead">Intelligent consoles: PATCH (lightweight) & NEO (advanced orchestration)</div>
-            <div class="cards-grid">
-                <!-- PATCH card (original style) -->
-                <div class="card patch">
-                    <div class="card-header"><div class="card-icon"><img src="patch.png" alt="PATCH"></div><div class="card-info"><h3>PATCH AI Console</h3><p>Lightweight & Efficient</p></div></div>
-                    <div class="card-body">
-                        <div><ul class="card-features"><li><i class="fas fa-check"></i> Minimal resource usage</li><li><i class="fas fa-check"></i> Fast inference</li><li><i class="fas fa-check"></i> Cross-platform</li></ul><p>Perfect for everyday AI tasks without heavy setup.</p></div>
-                        <div class="video-preview" data-video="VP.mp4"><video muted loop playsinline><source src="VP.mp4" type="video/mp4"></video><div class="expand-text">▶ Click to preview</div></div>
-                    </div>
-                    <div class="card-footer"><a href="https://patch-ai-nerdspace-cr.vercel.app" target="_blank" class="card-link">Launch PATCH →</a></div>
-                </div>
-                <!-- NEO card (original style) -->
-                <div class="card neo">
-                    <div class="card-header"><div class="card-icon"><img src="neo.png" alt="NEO"></div><div class="card-info"><h3>NEO AI Console</h3><p>Advanced & Sophisticated</p></div></div>
-                    <div class="card-body">
-                        <div><ul class="card-features"><li><i class="fas fa-check"></i> Multi-model orchestration</li><li><i class="fas fa-check"></i> Persistent memory</li><li><i class="fas fa-check"></i> Context-aware routing</li></ul><p>Stateful, adaptive intelligence for complex tasks.</p></div>
-                        <div class="video-preview" data-video="NVS.mp4"><video muted loop playsinline><source src="NVS.mp4" type="video/mp4"></video><div class="expand-text">▶ Click to preview</div></div>
-                    </div>
-                    <div class="card-footer"><a href="https://neo-ai-nerdspace-cr.vercel.app" target="_blank" class="card-link">Launch NEO →</a></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== GAMES CATEGORY ========== -->
-    <section id="games" class="category-section">
-        <div class="container">
-            <h2 class="section-title">🎮 Games</h2>
-            <div class="section-subhead">Interactive adventures: The Little Hiker & The Little Astronaut</div>
+            <h2 class="section-title">Future Projects</h2>
             <div class="cards-grid">
                 <div class="card">
-                    <div class="card-header"><div class="card-icon"><img src="TLH.png" alt="Little Hiker"></div><div class="card-info"><h3>The Little Hiker</h3><p>Adventure exploration</p></div></div>
-                    <div class="card-body"><p>Charming pixel-art journey through mountain trails, puzzles, and nature discovery.</p></div>
-                    <div class="card-footer"><a href="https://the-little-hiker.vercel.app" target="_blank" class="card-link">Play Game →</a></div>
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-chart-line"></i></div><div class="card-info"><h3>Analytics Pro</h3><p>Predictive insights</p></div></div>
+                    <div class="card-body"><ul class="card-features"><li><i class="fas fa-check"></i> Predictive modeling</li><li><i class="fas fa-check"></i> Real-time dashboards</li></ul><p>AI analytics platform</p></div>
+                    <div class="card-footer"><span class="coming-soon">Q4 2025</span></div>
                 </div>
                 <div class="card">
-                    <div class="card-header"><div class="card-icon"><img src="TLA.png" alt="Little Astronaut"></div><div class="card-info"><h3>The Little Astronaut</h3><p>Space exploration</p></div></div>
-                    <div class="card-body"><p>Embark on cosmic missions, discover planets, and solve interstellar challenges.</p></div>
-                    <div class="card-footer"><a href="https://the-little-astronaut.vercel.app" target="_blank" class="card-link">Explore Space →</a></div>
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-music"></i></div><div class="card-info"><h3>Audio Engineering</h3><p>Sound & music</p></div></div>
+                    <div class="card-body"><ul class="card-features"><li><i class="fas fa-check"></i> Processing tools</li><li><i class="fas fa-check"></i> AI composition</li></ul><p>Creative audio suite</p></div>
+                    <div class="card-footer"><span class="coming-soon">Q1 2026</span></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon"><i class="fas fa-rocket"></i></div><div class="card-info"><h3>Startup Ventures</h3><p>New concepts</p></div></div>
+                    <div class="card-body"><ul class="card-features"><li><i class="fas fa-check"></i> Product development</li><li><i class="fas fa-check"></i> Market analysis</li></ul><p>Incubating ideas</p></div>
+                    <div class="card-footer"><span class="coming-soon">Q2 2026</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== CREATIVE WORKFLOWS ========== (all other projects) -->
-    <section id="creative" class="category-section">
+    <!-- Contact Section -->
+    <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title">✨ Creative Workflows</h2>
-            <div class="section-subhead">Startup experiments, design systems, business tools & nerd ecosystem</div>
-            <div class="cards-grid">
-                <!-- Cold2Close -->
-                <div class="card"><div class="card-header"><div class="card-icon"><img src="Call me.png" alt="cold2close"></div><div class="card-info"><h3>Cold2Close</h3><p>AI cold-calling platform</p></div></div><div class="card-body"><p>Smart outreach automation for sales teams.</p></div><div class="card-footer"><a href="https://cold-2-close.vercel.app" target="_blank" class="card-link">Launch Platform →</a></div></div>
-                <!-- Artisan Gems -->
-                <div class="card"><div class="card-header"><div class="card-icon"><img src="artisan.png" alt="artisan"></div><div class="card-info"><h3>Artisan Gems</h3><p>Jewelry brand website</p></div></div><div class="card-body"><p>Elegant design for luxury handcrafted jewelry.</p></div><div class="card-footer"><a href="https://artisan-gems-the-woodlands-tx.vercel.app" target="_blank" class="card-link">View Site →</a></div></div>
-                <!-- Nati Nails -->
-                <div class="card"><div class="card-header"><div class="card-icon"><img src="nati2.png" alt="nati nails"></div><div class="card-info"><h3>Nati Nails</h3><p>Salon startup website</p></div></div><div class="card-body"><p>Modern booking & portfolio for nail artistry.</p></div><div class="card-footer"><a href="https://natinails.vercel.app" target="_blank" class="card-link">Visit Nati Nails →</a></div></div>
-                <!-- NerdSpace Hub -->
-                <div class="card"><div class="card-header"><div class="card-icon"><img src="NerdSpace.png" alt="nerdspace"></div><div class="card-info"><h3>NerdSpace Hub</h3><p>Tech ecosystem</p></div></div><div class="card-body"><p>Central hub for all my digital experiments.</p></div><div class="card-footer"><a href="https://nerdspace-hub-cr.vercel.app" target="_blank" class="card-link">Explore Hub →</a></div></div>
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Let's connect</h3>
+                    <p style="margin-bottom: 24px;">Collaboration, feedback, or just a conversation — reach out.</p>
+                    <div class="contact-detail"><i class="fas fa-envelope"></i><div><strong>Email</strong><br>contact@nerdspace.com</div></div>
+                    <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><div><strong>Location</strong><br>United States</div></div>
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <input type="text" placeholder="Your name" required>
+                    <input type="email" placeholder="Email address" required>
+                    <select><option>Inquiry type</option><option>Technical</option><option>Collaboration</option></select>
+                    <textarea rows="4" placeholder="Message"></textarea>
+                    <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- ========== FUTURE PROJECTS & VENTURES (preserved from original) ========== -->
-    <section id="future" class="category-section">
+    <footer>
         <div class="container">
-            <h2 class="section-title">🚀 Future Projects & Ventures</h2>
-            <div class="section-subhead">Upcoming implementations: Analytics Pro, Audio Engineering, Startup lab</div>
-            <div class="cards-grid">
-                <div class="card future"><div class="card-header"><div class="card-icon"><i class="fas fa-chart-line"></i></div><div class="card-info"><h3>Analytics Pro</h3><p>Predictive modeling platform</p></div></div><div class="card-body"><ul class="card-features"><li><i class="fas fa-chart-simple"></i> Data visualization</li><li><i class="fas fa-brain"></i> ML forecasting</li></ul><p>Advanced analytics suite for real-time insights.</p></div><div class="card-footer"><span class="coming-soon">Q4 2025</span></div></div>
-                <div class="card audio"><div class="card-header"><div class="card-icon"><i class="fas fa-music"></i></div><div class="card-info"><h3>Audio Engineering</h3><p>Sound design toolkit</p></div></div><div class="card-body"><ul class="card-features"><li><i class="fas fa-waveform"></i> AI mixing</li><li><i class="fas fa-headphones"></i> Spatial audio</li></ul><p>Creative suite for producers & composers.</p></div><div class="card-footer"><span class="coming-soon">Q1 2026</span></div></div>
-                <div class="card future"><div class="card-header"><div class="card-icon"><i class="fas fa-rocket"></i></div><div class="card-info"><h3>Startup Ventures</h3><p>Innovation lab</p></div></div><div class="card-body"><ul class="card-features"><li><i class="fas fa-lightbulb"></i> Product incubator</li><li><i class="fas fa-chart-line"></i> Market strategy</li></ul><p>Exploring next-gen business tools.</p></div><div class="card-footer"><span class="coming-soon">Q2 2026</span></div></div>
+            <div class="footer-content">
+                <div class="footer-column"><h3>NerdSpace</h3><p>AI, web, audio — curated by Cesar.</p><div class="social-links"><a href="https://github.com/reyecesa1" class="social-link"><i class="fab fa-github"></i></a><a href="https://www.instagram.com/rmcesar.a" class="social-link"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/cre25/" class="social-link"><i class="fab fa-linkedin"></i></a></div></div>
+                <div class="footer-column"><h3>Projects</h3><ul class="footer-links"><li><a href="#all-projects">All Projects</a></li><li><a href="#future">Future</a></li><li><a href="https://github.com/reyecesa1">GitHub</a></li></ul></div>
+                <div class="footer-column"><h3>Connect</h3><ul class="footer-links"><li><a href="#contact">Contact</a></li><li><a href="https://cr-about-me.vercel.app">About Me</a></li></ul></div>
             </div>
+            <div class="footer-bottom">© 2025 NerdSpace — Executive portfolio</div>
         </div>
-    </section>
-
-    <!-- Contact Section unchanged but enhanced -->
-    <section id="contact" class="category-section" style="background: rgba(15, 15, 35, 0.5);">
-        <div class="container">
-            <h2 class="section-title">📬 Get In Touch</h2>
-            <div style="display: flex; gap: 50px; flex-wrap: wrap;">
-                <div style="flex:1; min-width:280px;"><h3 style="font-size:2rem;">Let's Connect</h3><p style="margin:20px 0;">Have questions, collaborations or feedback? I’d love to hear.</p>
-                <div style="margin:25px 0;"><i class="fas fa-envelope" style="color:var(--accent); margin-right:15px;"></i> <strong>contact@nerdspace.com</strong></div>
-                <div><i class="fas fa-map-marker-alt" style="color:var(--accent); margin-right:15px;"></i> United States / Remote</div></div>
-                <div style="flex:1; min-width:280px;"><form id="contactForm" style="background: var(--card-bg); padding: 40px; border-radius: 28px; backdrop-filter: blur(15px);">
-                    <input type="text" placeholder="Your Name" style="width:100%; padding:14px; margin-bottom:20px; background:rgba(45,45,75,0.8); border:1px solid rgba(255,255,255,0.2); border-radius:12px; color:white;" required>
-                    <input type="email" placeholder="Your Email" style="width:100%; padding:14px; margin-bottom:20px; background:rgba(45,45,75,0.8); border-radius:12px; color:white;" required>
-                    <select style="width:100%; padding:14px; margin-bottom:20px; background:rgba(45,45,75,0.8); border-radius:12px; color:white;">
-                        <option>Inquiry Type</option><option>Technical</option><option>Collaboration</option><option>General</option>
-                    </select>
-                    <textarea placeholder="Your message..." rows="4" style="width:100%; padding:14px; background:rgba(45,45,75,0.8); border-radius:12px; color:white;" required></textarea>
-                    <button type="submit" class="cta-button" style="margin-top:25px; width:100%;">Send Message</button>
-                </form></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer unchanged -->
-    <footer><div class="container"><div class="footer-content"><div class="footer-column"><h3>Technology Hub</h3><p>A curated showcase of AI, games, business, and creative experiments.</p><div class="social-links"><a href="https://github.com/reyecesa1" class="social-link"><i class="fab fa-github"></i></a><a href="https://www.instagram.com/rmcesar.a" class="social-link"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/cre25/" class="social-link"><i class="fab fa-linkedin"></i></a><a href="https://huggingface.co/reyecesa" class="social-link"><i class="fas fa-brain"></i></a></div></div><div class="footer-column"><h3>Navigate</h3><ul class="footer-links"><li><a href="#business">Business</a></li><li><a href="#studies">Studies</a></li><li><a href="#ai-models">AI Models</a></li><li><a href="#games">Games</a></li><li><a href="#creative">Workflows</a></li></ul></div><div class="footer-column"><h3>Resources</h3><ul class="footer-links"><li><a href="https://github.com/reyecesa1" target="_blank">GitHub</a></li><li><a href="#ai-models">Demos</a></li><li><a href="#future">Roadmap</a></li></ul></div><div class="footer-column"><h3>Connect</h3><ul class="footer-links"><li><a href="#contact">Contact</a></li><li><a href="https://cr-about-me.vercel.app">About Me</a></li></ul></div></div><div class="footer-bottom"><p>© 2025 NerdSpace.CR — Categorized showcase | built with focus</p></div></div></footer>
-
-    <!-- Video Modal -->
-    <div class="video-modal" id="videoModal"><div class="modal-content"><button class="close-modal" id="closeModal"><i class="fas fa-times"></i></button><div class="modal-video"><video controls id="modalVideo"></video></div></div></div>
+    </footer>
 
     <script>
-        // mobile toggle
-        document.querySelector('.mobile-menu')?.addEventListener('click', e => { e.stopPropagation(); document.querySelector('.mobile-dropdown')?.classList.toggle('active'); });
+        document.querySelector('.mobile-menu')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.querySelector('.mobile-dropdown')?.classList.toggle('active');
+        });
         document.addEventListener('click', () => document.querySelector('.mobile-dropdown')?.classList.remove('active'));
-
-        // smooth scroll + active nav update
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetEl = document.getElementById(targetId);
-                if(targetEl) { window.scrollTo({ top: targetEl.offsetTop - 80, behavior: 'smooth' }); document.querySelector('.mobile-dropdown')?.classList.remove('active'); }
-            });
-        });
-
-        // Scroll reveal for categories (Intersection Observer)
-        const sections = document.querySelectorAll('.category-section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); });
-        }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
-        sections.forEach(section => observer.observe(section));
-        // manually reveal hero? not needed, but also reveal on load if visible
-        window.dispatchEvent(new Event('scroll'));
-
-        // Video modal logic (preserved)
-        const modal = document.getElementById('videoModal');
-        const modalVideo = document.getElementById('modalVideo');
-        const closeModalBtn = document.getElementById('closeModal');
-        document.querySelectorAll('.video-preview').forEach(preview => {
-            preview.addEventListener('click', (e) => {
-                const vidSrc = preview.getAttribute('data-video');
-                if(vidSrc) { modalVideo.src = vidSrc; modal.classList.add('active'); document.body.style.overflow = 'hidden'; modalVideo.play(); }
-            });
-        });
-        const closeModalFn = () => { modal.classList.remove('active'); modalVideo.pause(); modalVideo.src = ''; document.body.style.overflow = 'auto'; };
-        closeModalBtn.addEventListener('click', closeModalFn);
-        modal.addEventListener('click', (e) => { if(e.target === modal) closeModalFn(); });
-        // contact form alert
-        document.getElementById('contactForm')?.addEventListener('submit', function(e) { e.preventDefault(); alert('Thank you! I’ll reply soon.'); this.reset(); });
-        // active nav highlight on scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.querySelector('.mobile-dropdown')?.classList.remove('active');
+        }));
+        document.getElementById('contactForm')?.addEventListener('submit', (e) => { e.preventDefault(); alert('Thank you — I’ll reply promptly.'); e.target.reset(); });
         window.addEventListener('scroll', () => {
-            const fromTop = window.scrollY + 120;
-            document.querySelectorAll('.nav-links a, .mobile-dropdown a').forEach(link => {
-                const hash = link.getAttribute('href'); if(!hash || hash === '#') return;
-                const el = document.querySelector(hash);
-                if(el && el.offsetTop <= fromTop && el.offsetTop + el.offsetHeight > fromTop) link.classList.add('active');
-                else link.classList.remove('active');
-            });
+            const sections = document.querySelectorAll('section');
+            let current = '';
+            sections.forEach(section => { if(window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+            document.querySelectorAll('.nav-links a').forEach(link => { link.classList.remove('active'); if(link.getAttribute('href') === `#${current}`) link.classList.add('active'); });
         });
     </script>
 </body>
