@@ -129,7 +129,6 @@
             min-width: 160px;
         }
 
-        /* THIS WAS MISSING – makes the dropdown visible */
         .mobile-dropdown.active {
             display: block;
         }
@@ -353,7 +352,7 @@
 
         /* ---------- DARK MODE ---------- */
         body.dark-mode {
-            --primary: #818cf8;          /* lighter indigo for dark bg */
+            --primary: #818cf8;
             --primary-dark: #6366f1;
             --bg: #0f0f23;
             --bg-light: #1a1a2e;
@@ -374,7 +373,6 @@
             --icon-bg: #2d2d44;
         }
 
-        /* Additional dark mode adjustments for elements that don't use variables */
         body.dark-mode .cta-button.secondary-button {
             color: var(--primary);
             border-color: var(--primary);
@@ -407,7 +405,7 @@
 <body>
     <header>
         <div class="container header-container">
-            <a class="logo" id="home-link">
+            <a class="logo" href="#home">
                 <div class="logo-icon"><i class="fas fa-brain"></i></div>
                 <div>NerdSpace</div>
             </a>
@@ -416,7 +414,6 @@
                     <li><a class="nav-link active" href="#home">Home</a></li>
                     <li><a href="#all-projects">Projects</a></li>
                 </ul>
-                <!-- Dark mode toggle button -->
                 <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i>
                 </button>
@@ -499,7 +496,7 @@
                 </div>
             </div>
 
-            <!-- 3. Ventures -->
+            <!-- 3. Ventures (added Black Widow Inks) -->
             <div class="category">
                 <h3><i class="fas fa-lightbulb" style="margin-right: 8px;"></i> Ventures</h3>
                 <div class="grid">
@@ -524,10 +521,19 @@
                             <a href="https://artisan-gems-the-woodlands-tx.vercel.app" target="_blank" class="project-link">Visit</a>
                         </div>
                     </div>
+                    <!-- NEW: Black Widow Inks (Ventures) -->
+                    <div class="grid-item" style="background-color: var(--badge-bg); background-image: none;">
+                        <div class="grid-overlay">
+                            <i class="fas fa-droplet" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
+                            <h4>Black Widow Inks</h4>
+                            <p>Tattoo studio & custom designs</p>
+                            <a href="https://black-widow-inks.vercel.app" target="_blank" class="project-link">Visit</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- 4. Games -->
+            <!-- 4. Games (added Touch Grass) -->
             <div class="category">
                 <h3><i class="fas fa-gamepad" style="margin-right: 8px;"></i> Games</h3>
                 <div class="grid">
@@ -545,6 +551,15 @@
                             <a href="https://the-little-astronaut.vercel.app" target="_blank" class="project-link">Play</a>
                         </div>
                     </div>
+                    <!-- NEW: Touch Grass Game -->
+                    <div class="grid-item" style="background-color: var(--badge-bg); background-image: none;">
+                        <div class="grid-overlay">
+                            <i class="fas fa-leaf" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
+                            <h4>Touch Grass</h4>
+                            <p>Outdoor interactive experience</p>
+                            <a href="https://reyecesa1.github.io/Touch-Grass" target="_blank" class="project-link">Play</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -552,7 +567,6 @@
             <div class="category">
                 <h3><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i> Studies & Others</h3>
                 <div class="grid">
-                    <!-- Blog placeholder -->
                     <div class="grid-item" style="background-color: var(--badge-bg); background-image: none;">
                         <div class="grid-overlay">
                             <i class="fas fa-blog" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
@@ -579,7 +593,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>NerdSpace</h3>
-                    <p>Always creating... — C</p>
+                    <p>Always creating... — C.</p>
                     <div class="social-links">
                         <a href="https://github.com/reyecesa1" class="social-link"><i class="fab fa-github"></i></a>
                         <a href="https://www.instagram.com/rmcesar.a" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -624,7 +638,6 @@
         const body = document.body;
         const icon = darkToggle.querySelector('i');
 
-        // Check localStorage for user preference
         if (localStorage.getItem('darkMode') === 'enabled') {
             body.classList.add('dark-mode');
             icon.classList.remove('fa-moon');
@@ -634,7 +647,6 @@
         darkToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             const isDark = body.classList.contains('dark-mode');
-            // Update icon
             if (isDark) {
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
