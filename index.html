@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NerdSpace | Cesar's Tech Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Refined fonts: Playfair for headings, Lato for body (book-like) -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ----- EXECUTIVE / BOOK-LIKE STYLING ----- */
         :root {
             --primary: #2c3e66;
             --primary-dark: #1e2a47;
@@ -24,11 +22,7 @@
             --transition: all 0.2s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background: var(--bg);
@@ -40,20 +34,15 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* headings use serif for elegance */
         h1, h2, h3, h4, .logo, .section-title, .category h3 {
             font-family: 'Playfair Display', serif;
             font-weight: 500;
             letter-spacing: -0.01em;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-        /* Header - refined, lighter */
+        /* Header */
         header {
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(12px);
@@ -79,18 +68,11 @@
             font-weight: 600;
             color: var(--primary);
             text-decoration: none;
-            letter-spacing: -0.3px;
         }
 
-        .logo-icon {
-            font-size: 1.2rem;
-        }
+        .logo-icon { font-size: 1.2rem; }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 28px;
-        }
+        .nav-links { display: flex; list-style: none; gap: 28px; }
 
         .nav-links a {
             font-family: 'Lato', sans-serif;
@@ -103,15 +85,9 @@
             transition: var(--transition);
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary);
-        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
 
-        .mobile-menu {
-            display: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
+        .mobile-menu { display: none; font-size: 1.2rem; cursor: pointer; }
 
         .mobile-dropdown {
             display: none;
@@ -125,40 +101,29 @@
             z-index: 1001;
         }
 
-        /* Hero – reduced height, refined overlay */
+        .mobile-dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .mobile-dropdown a:hover { background: #f1f5f9; }
+
+        /* Hero – clean, no background video */
         .hero-section {
-            position: relative;
-            height: 75vh;
-            min-height: 500px;
-            display: flex;
-            align-items: center;
+            background: #ffffff;
+            padding: 120px 0 80px;
             margin-top: 58px;
-        }
-
-        .hero-background {
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-        }
-
-        .hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.3;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.2);
-            z-index: -1;
+            text-align: center;
         }
 
         .hero-content {
             max-width: 680px;
             margin: 0 auto;
-            text-align: center;
         }
 
         .hero-content h1 {
@@ -166,22 +131,19 @@
             font-weight: 600;
             color: #1e293b;
             margin-bottom: 16px;
-            letter-spacing: -0.02em;
         }
 
         .hero-content p {
             font-size: 1rem;
             color: #334155;
             margin-bottom: 28px;
-            max-width: 540px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .hero-buttons {
             display: flex;
             gap: 12px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .cta-button {
@@ -209,33 +171,23 @@
             transform: translateY(-2px);
         }
 
-        /* Section common */
+        /* Sections */
         .section {
             padding: 64px 0;
             border-bottom: 1px solid var(--border-light);
         }
 
-        .section:last-of-type {
-            border-bottom: none;
-        }
+        .section:last-of-type { border-bottom: none; }
 
         .section-title {
             text-align: center;
             font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 40px;
-            letter-spacing: -0.3px;
             color: #0f172a;
         }
 
-        .section-title:after {
-            display: none;
-        }
-
-        /* Category headings */
-        .category {
-            margin-bottom: 48px;
-        }
+        .category { margin-bottom: 48px; }
 
         .category h3 {
             font-size: 1.25rem;
@@ -244,10 +196,9 @@
             padding-bottom: 6px;
             border-bottom: 1px solid var(--border-light);
             display: inline-block;
-            letter-spacing: -0.2px;
         }
 
-        /* Instagram-style grid – smaller, elegant tiles */
+        /* Instagram-style grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -288,9 +239,7 @@
             color: var(--text);
         }
 
-        .grid-item:hover .grid-overlay {
-            opacity: 1;
-        }
+        .grid-item:hover .grid-overlay { opacity: 1; }
 
         .grid-overlay h4 {
             font-family: 'Playfair Display', serif;
@@ -316,135 +265,15 @@
             transition: background 0.2s;
         }
 
-        .project-link:hover {
-            background: var(--primary-dark);
-        }
+        .project-link:hover { background: var(--primary-dark); }
 
-        /* Future projects cards – more compact */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            border: 1px solid var(--border-light);
-            transition: var(--transition);
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .card-header {
-            padding: 20px 20px 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .card-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #eef2ff;
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        .card-info h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .card-info p {
-            font-size: 0.7rem;
-            color: var(--text-light);
-        }
-
-        .card-body {
-            padding: 0 20px 20px;
-        }
-
-        .card-features {
-            list-style: none;
-            margin-bottom: 12px;
-        }
-
-        .card-features li {
-            font-size: 0.75rem;
-            margin-bottom: 6px;
-            display: flex;
-            gap: 8px;
-        }
-
-        .card-features i {
-            color: var(--primary);
-            font-size: 0.7rem;
-        }
-
-        .coming-soon {
-            display: inline-block;
+        .coming-soon-badge {
             background: #f1f5f9;
+            color: var(--text-light);
             padding: 4px 12px;
             border-radius: 30px;
             font-size: 0.7rem;
-            color: var(--primary);
-        }
-
-        /* Contact section */
-        .contact-grid {
-            display: flex;
-            gap: 48px;
-            flex-wrap: wrap;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 16px;
-        }
-
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .contact-detail i {
-            font-size: 1.2rem;
-            color: var(--primary);
-        }
-
-        .contact-form {
-            flex: 1;
-            background: white;
-            padding: 28px;
-            border-radius: 20px;
-            border: 1px solid var(--border-light);
-        }
-
-        .contact-form input, .contact-form select, .contact-form textarea {
-            width: 100%;
-            padding: 10px 14px;
-            margin-bottom: 16px;
-            border: 1px solid var(--border-light);
-            border-radius: 10px;
-            font-family: 'Lato', sans-serif;
-            font-size: 0.85rem;
-            background: white;
+            font-weight: 500;
         }
 
         /* Footer */
@@ -461,35 +290,18 @@
             margin-bottom: 32px;
         }
 
-        .footer-column h3 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
+        .footer-column h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 16px; }
 
-        .footer-links {
-            list-style: none;
-        }
+        .footer-links { list-style: none; }
 
-        .footer-links li {
-            margin-bottom: 8px;
-        }
+        .footer-links li { margin-bottom: 8px; }
 
-        .footer-links a {
-            font-size: 0.8rem;
-            color: var(--text-light);
-            text-decoration: none;
-        }
+        .footer-links a { font-size: 0.8rem; color: var(--text-light); text-decoration: none; }
 
-        .social-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 12px;
-        }
+        .social-links { display: flex; gap: 12px; margin-top: 12px; }
 
         .social-link {
-            width: 32px;
-            height: 32px;
+            width: 32px; height: 32px;
             border-radius: 50%;
             background: #f1f5f9;
             display: flex;
@@ -512,7 +324,7 @@
             .nav-links { display: none; }
             .mobile-menu { display: block; }
             .hero-content h1 { font-size: 2rem; }
-            .hero-section { height: 60vh; }
+            .hero-section { padding: 100px 0 60px; }
             .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
             .section { padding: 48px 0; }
             .container { padding: 0 20px; }
@@ -535,29 +347,19 @@
             <ul class="nav-links">
                 <li><a class="nav-link active" href="#home">Home</a></li>
                 <li><a href="#all-projects">Projects</a></li>
-                <li><a href="#future">Future</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu">
                 <i class="fas fa-bars"></i>
                 <div class="mobile-dropdown">
                     <a href="#home">Home</a>
                     <a href="#all-projects">Projects</a>
-                    <a href="#future">Future</a>
-                    <a href="#contact">Contact</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero (same video, refined) -->
+    <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <div class="hero-background">
-            <video class="hero-video" autoplay muted loop playsinline>
-                <source src="tech.mp4" type="video/mp4">
-            </video>
-            <div class="hero-overlay"></div>
-        </div>
         <div class="container">
             <div class="hero-content">
                 <h1>Cesar's Tech Hub</h1>
@@ -570,129 +372,204 @@
         </div>
     </section>
 
-    <!-- Instagram-style categorized grid (smaller, cleaner) -->
+    <!-- Projects Grid – Reorganized Categories -->
     <section id="all-projects" class="section">
         <div class="container">
             <h2 class="section-title">All Projects</h2>
             
+            <!-- 1. Business -->
             <div class="category">
                 <h3><i class="fas fa-briefcase" style="margin-right: 8px;"></i> Business</h3>
                 <div class="grid">
-                    <div class="grid-item" style="background-image: url('Swift2.png');"><div class="grid-overlay"><h4>SwiftSite</h4><p>Rapid dev startup</p><a href="https://swiftsiteonline.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
-                    <div class="grid-item" style="background-image: url('Call me.png');"><div class="grid-overlay"><h4>Cold2Close</h4><p>AI cold calling</p><a href="https://cold-2-close.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
-                    <div class="grid-item" style="background-image: url('artisan.png');"><div class="grid-overlay"><h4>Artisan Gems</h4><p>Jewelry website</p><a href="https://artisan-gems-the-woodlands-tx.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
-                    <div class="grid-item" style="background-image: url('nati2.png');"><div class="grid-overlay"><h4>Nati Nails</h4><p>Salon startup</p><a href="https://natinails.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
+                    <div class="grid-item" style="background-image: url('Me.png');">
+                        <div class="grid-overlay">
+                            <h4>Portfolio</h4>
+                            <p>About me & experience</p>
+                            <a href="https://cr-about-me.vercel.app" target="_blank" class="project-link">Visit</a>
+                        </div>
+                    </div>
+                    <div class="grid-item" style="background-image: url('chatbot.png');">
+                        <div class="grid-overlay">
+                            <h4>Resume Assistant</h4>
+                            <p>AI chatbot for CVs</p>
+                            <a href="https://resume-assistant-chatbot.vercel.app" target="_blank" class="project-link">Visit</a>
+                        </div>
+                    </div>
+                    <div class="grid-item" style="background-image: url('Swift2.png');">
+                        <div class="grid-overlay">
+                            <h4>SwiftSite</h4>
+                            <p>Rapid dev startup</p>
+                            <a href="https://swiftsiteonline.vercel.app" target="_blank" class="project-link">Visit</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="category">
-                <h3><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i> Studies (New)</h3>
-                <div class="grid">
-                    <div class="grid-item" style="background-image: url('chatbot.png');"><div class="grid-overlay"><h4>Resume Assistant</h4><p>AI chatbot</p><a href="https://resume-assistant-chatbot.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
-                </div>
-            </div>
-
+            <!-- 2. AI Models -->
             <div class="category">
                 <h3><i class="fas fa-microchip" style="margin-right: 8px;"></i> AI Models</h3>
                 <div class="grid">
-                    <div class="grid-item" style="background-image: url('patch.png');"><div class="grid-overlay"><h4>PATCH AI</h4><p>Lightweight console</p><a href="https://patch-ai-nerdspace-cr.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
-                    <div class="grid-item" style="background-image: url('neo.png');"><div class="grid-overlay"><h4>NEO AI</h4><p>Multi‑model orchestration</p><a href="https://neo-ai-nerdspace-cr.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
+                    <div class="grid-item" style="background-image: url('patch.png');">
+                        <div class="grid-overlay">
+                            <h4>PATCH AI</h4>
+                            <p>Lightweight console</p>
+                            <a href="https://patch-ai-nerdspace-cr.vercel.app" target="_blank" class="project-link">Visit</a>
+                        </div>
+                    </div>
+                    <div class="grid-item" style="background-image: url('neo.png');">
+                        <div class="grid-overlay">
+                            <h4>NEO AI</h4>
+                            <p>Multi‑model orchestration</p>
+                            <a href="https://neo-ai-nerdspace-cr.vercel.app" target="_blank" class="project-link">Visit</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+            <!-- 3. Ventures -->
+            <div class="category">
+                <h3><i class="fas fa-lightbulb" style="margin-right: 8px;"></i> Ventures</h3>
+                <div class="grid">
+                    <div class="grid-item" style="background-image: url('nati2.png');">
+                        <div class="grid-overlay">
+                            <h4>Nati Nails</h4>
+                            <p>Salon startup</p>
+                            <a href="https://natinails.vercel.app" target="_blank" class="project-link">Visit</a>
+                        </div>
+                    </div>
+                    <div class="grid-item" style="background-image: url('Call me.png');">
+                        <div class="grid-overlay">
+                            <h4>Cold2Close</h4>
+                            <p>AI cold calling</p>
+                            <a href="https://cold-2-close.vercel.app" target="_blank" class="project-link">Visit</a>
+                        </div>
+                    </div>
+                    <div class="grid-item" style="background-image: url('artisan.png');">
+                        <div class="grid-overlay">
+                            <h4>Artisan Gems</h4>
+                            <p>Jewelry website</p>
+                            <a href="https://artisan-gems-the-woodlands-tx.vercel.app" target="_blank" class="project-link">Visit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Games -->
             <div class="category">
                 <h3><i class="fas fa-gamepad" style="margin-right: 8px;"></i> Games</h3>
                 <div class="grid">
-                    <div class="grid-item" style="background-image: url('TLH.png');"><div class="grid-overlay"><h4>The Little Hiker</h4><p>Adventure game</p><a href="https://the-little-hiker.vercel.app" target="_blank" class="project-link">Play</a></div></div>
-                    <div class="grid-item" style="background-image: url('TLA.png');"><div class="grid-overlay"><h4>The Little Astronaut</h4><p>Space exploration</p><a href="https://the-little-astronaut.vercel.app" target="_blank" class="project-link">Play</a></div></div>
+                    <div class="grid-item" style="background-image: url('TLH.png');">
+                        <div class="grid-overlay">
+                            <h4>The Little Hiker</h4>
+                            <p>Adventure game</p>
+                            <a href="https://the-little-hiker.vercel.app" target="_blank" class="project-link">Play</a>
+                        </div>
+                    </div>
+                    <div class="grid-item" style="background-image: url('TLA.png');">
+                        <div class="grid-overlay">
+                            <h4>The Little Astronaut</h4>
+                            <p>Space exploration</p>
+                            <a href="https://the-little-astronaut.vercel.app" target="_blank" class="project-link">Play</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+            <!-- 5. Studies & Others -->
             <div class="category">
-                <h3><i class="fas fa-ellipsis-h" style="margin-right: 8px;"></i> Other Projects</h3>
+                <h3><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i> Studies & Others</h3>
                 <div class="grid">
-                    <div class="grid-item" style="background-image: url('Me.png');"><div class="grid-overlay"><h4>Portfolio</h4><p>About me</p><a href="https://cr-about-me.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
-                    <div class="grid-item" style="background-image: url('NerdSpace.png');"><div class="grid-overlay"><h4>NerdSpace Hub</h4><p>Original hub</p><a href="https://nerdspace-hub-cr.vercel.app" target="_blank" class="project-link">Visit</a></div></div>
+                    <!-- Blog placeholder – no background image, icon instead -->
+                    <div class="grid-item" style="background-color: #eef2ff; background-image: none;">
+                        <div class="grid-overlay">
+                            <i class="fas fa-blog" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
+                            <h4>All Over the Place</h4>
+                            <p>Blog (coming soon)</p>
+                            <span class="coming-soon-badge">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="grid-item" style="background-image: url('NerdSpace.png');">
+                        <div class="grid-overlay">
+                            <h4>NerdSpace Hub</h4>
+                            <p>Original hub</p>
+                            <a href="https://nerdspace-hub-cr.vercel.app" target="_blank" class="project-link">Visit</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Future Projects -->
-    <section id="future" class="section">
-        <div class="container">
-            <h2 class="section-title">Future Projects</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <div class="card-header"><div class="card-icon"><i class="fas fa-chart-line"></i></div><div class="card-info"><h3>Analytics Pro</h3><p>Predictive insights</p></div></div>
-                    <div class="card-body"><ul class="card-features"><li><i class="fas fa-check"></i> Predictive modeling</li><li><i class="fas fa-check"></i> Real-time dashboards</li></ul><p>AI analytics platform</p></div>
-                    <div class="card-footer"><span class="coming-soon">Q4 2025</span></div>
-                </div>
-                <div class="card">
-                    <div class="card-header"><div class="card-icon"><i class="fas fa-music"></i></div><div class="card-info"><h3>Audio Engineering</h3><p>Sound & music</p></div></div>
-                    <div class="card-body"><ul class="card-features"><li><i class="fas fa-check"></i> Processing tools</li><li><i class="fas fa-check"></i> AI composition</li></ul><p>Creative audio suite</p></div>
-                    <div class="card-footer"><span class="coming-soon">Q1 2026</span></div>
-                </div>
-                <div class="card">
-                    <div class="card-header"><div class="card-icon"><i class="fas fa-rocket"></i></div><div class="card-info"><h3>Startup Ventures</h3><p>New concepts</p></div></div>
-                    <div class="card-body"><ul class="card-features"><li><i class="fas fa-check"></i> Product development</li><li><i class="fas fa-check"></i> Market analysis</li></ul><p>Incubating ideas</p></div>
-                    <div class="card-footer"><span class="coming-soon">Q2 2026</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Let's connect</h3>
-                    <p style="margin-bottom: 24px;">Collaboration, feedback, or just a conversation — reach out.</p>
-                    <div class="contact-detail"><i class="fas fa-envelope"></i><div><strong>Email</strong><br>contact@nerdspace.com</div></div>
-                    <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><div><strong>Location</strong><br>United States</div></div>
-                </div>
-                <form id="contactForm" class="contact-form">
-                    <input type="text" placeholder="Your name" required>
-                    <input type="email" placeholder="Email address" required>
-                    <select><option>Inquiry type</option><option>Technical</option><option>Collaboration</option></select>
-                    <textarea rows="4" placeholder="Message"></textarea>
-                    <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer (Future and Contact removed) -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column"><h3>NerdSpace</h3><p>AI, web, audio — curated by Cesar.</p><div class="social-links"><a href="https://github.com/reyecesa1" class="social-link"><i class="fab fa-github"></i></a><a href="https://www.instagram.com/rmcesar.a" class="social-link"><i class="fab fa-instagram"></i></a><a href="https://www.linkedin.com/in/cre25/" class="social-link"><i class="fab fa-linkedin"></i></a></div></div>
-                <div class="footer-column"><h3>Projects</h3><ul class="footer-links"><li><a href="#all-projects">All Projects</a></li><li><a href="#future">Future</a></li><li><a href="https://github.com/reyecesa1">GitHub</a></li></ul></div>
-                <div class="footer-column"><h3>Connect</h3><ul class="footer-links"><li><a href="#contact">Contact</a></li><li><a href="https://cr-about-me.vercel.app">About Me</a></li></ul></div>
+                <div class="footer-column">
+                    <h3>NerdSpace</h3>
+                    <p>AI, web, audio — curated by Cesar.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/reyecesa1" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/rmcesar.a" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/cre25/" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Projects</h3>
+                    <ul class="footer-links">
+                        <li><a href="#all-projects">All Projects</a></li>
+                        <li><a href="https://github.com/reyecesa1" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://cr-about-me.vercel.app" target="_blank">About Me</a></li>
+                        <li><span style="font-size:0.8rem; color:var(--text-light);">contact@nerdspace.com</span></li>
+                    </ul>
+                </div>
             </div>
             <div class="footer-bottom">© 2025 NerdSpace — Executive portfolio</div>
         </div>
     </footer>
 
     <script>
+        // Mobile menu toggle
         document.querySelector('.mobile-menu')?.addEventListener('click', (e) => {
             e.stopPropagation();
             document.querySelector('.mobile-dropdown')?.classList.toggle('active');
         });
-        document.addEventListener('click', () => document.querySelector('.mobile-dropdown')?.classList.remove('active'));
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.addEventListener('click', () => {
             document.querySelector('.mobile-dropdown')?.classList.remove('active');
-        }));
-        document.getElementById('contactForm')?.addEventListener('submit', (e) => { e.preventDefault(); alert('Thank you — I’ll reply promptly.'); e.target.reset(); });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelector('.mobile-dropdown')?.classList.remove('active');
+                }
+            });
+        });
+
+        // Active nav link on scroll (only Home and Projects)
         window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
+            const sections = ['home', 'all-projects'];
             let current = '';
-            sections.forEach(section => { if(window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
-            document.querySelectorAll('.nav-links a').forEach(link => { link.classList.remove('active'); if(link.getAttribute('href') === `#${current}`) link.classList.add('active'); });
+            sections.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && window.scrollY >= el.offsetTop - 100) {
+                    current = id;
+                }
+            });
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
