@@ -167,17 +167,15 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.32;          /* subtle & elegant, preserves text readability */
+            opacity: 0.32;
             pointer-events: none;
             z-index: 0;
         }
 
-        /* Dark mode adjustment: slightly lower opacity for better contrast with dark backgrounds */
         body.dark-mode .hero-section::before {
             opacity: 0.28;
         }
 
-        /* Ensure hero content stays above the background image */
         .hero-section .container {
             position: relative;
             z-index: 2;
@@ -429,7 +427,7 @@
             .grid { gap: 12px; }
             .grid-overlay h4 { font-size: 0.85rem; }
             .grid-overlay p { font-size: 0.6rem; }
-            .hero-section::before { opacity: 0.28; } /* slightly lighter on small screens */
+            .hero-section::before { opacity: 0.28; }
         }
     </style>
 </head>
@@ -459,7 +457,7 @@
         </div>
     </header>
 
-    <!-- Hero Section with nerdspace.png background (elegant overlay) -->
+    <!-- Hero Section with nerdspace.png background -->
     <section id="home" class="hero-section">
         <div class="container">
             <div class="hero-content">
@@ -527,7 +525,7 @@
                 </div>
             </div>
 
-            <!-- 3. Ventures (including Black Widow Inks) -->
+            <!-- 3. Ventures (including Black Widow Inks with background image) -->
             <div class="category">
                 <h3><i class="fas fa-lightbulb" style="margin-right: 8px;"></i> Ventures</h3>
                 <div class="grid">
@@ -552,7 +550,8 @@
                             <a href="https://artisan-gems-the-woodlands-tx.vercel.app" target="_blank" class="project-link">Visit</a>
                         </div>
                     </div>
-                    <div class="grid-item" style="background-color: var(--badge-bg); background-image: none;">
+                    <!-- Black Widow Inks: now with background image 'blackwidowinksss.png' -->
+                    <div class="grid-item" style="background-image: url('blackwidowinksss.png'); background-size: cover; background-position: center;">
                         <div class="grid-overlay">
                             <i class="fas fa-droplet" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
                             <h4>Black Widow Inks</h4>
@@ -563,7 +562,7 @@
                 </div>
             </div>
 
-            <!-- 4. Games (including Touch Grass) -->
+            <!-- 4. Games (including Touch Grass with background image) -->
             <div class="category">
                 <h3><i class="fas fa-gamepad" style="margin-right: 8px;"></i> Games</h3>
                 <div class="grid">
@@ -581,7 +580,8 @@
                             <a href="https://the-little-astronaut.vercel.app" target="_blank" class="project-link">Play</a>
                         </div>
                     </div>
-                    <div class="grid-item" style="background-color: var(--badge-bg); background-image: none;">
+                    <!-- Touch Grass: now with background image 'touch grass.png' (filename includes space) -->
+                    <div class="grid-item" style="background-image: url('touch grass.png'); background-size: cover; background-position: center;">
                         <div class="grid-overlay">
                             <i class="fas fa-leaf" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
                             <h4>Touch Grass</h4>
@@ -592,12 +592,12 @@
                 </div>
             </div>
 
-            <!-- 5. Studies & Others (All Over the Place blog added) -->
+            <!-- 5. Studies & Others (All Over the Place blog with background image) -->
             <div class="category">
                 <h3><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i> Studies & Others</h3>
                 <div class="grid">
-                    <!-- All Over the Place blog – now live! -->
-                    <div class="grid-item" style="background-color: var(--badge-bg); background-image: none;">
+                    <!-- All Over the Place: now with background image 'allover.png' -->
+                    <div class="grid-item" style="background-image: url('allover.png'); background-size: cover; background-position: center;">
                         <div class="grid-overlay">
                             <i class="fas fa-blog" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
                             <h4>All Over the Place</h4>
