@@ -145,12 +145,42 @@
 
         .mobile-dropdown a:hover { background: var(--badge-bg); }
 
-        /* Hero */
+        /* Hero Section — with nerdspace.png background overlay */
         .hero-section {
+            position: relative;
             background: var(--hero-bg);
             padding: 120px 0 80px;
             margin-top: 58px;
             text-align: center;
+            overflow: hidden;
+        }
+
+        /* Background image: nerdspace.png with soft transparency */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('nerdspace.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.32;          /* subtle & elegant, preserves text readability */
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Dark mode adjustment: slightly lower opacity for better contrast with dark backgrounds */
+        body.dark-mode .hero-section::before {
+            opacity: 0.28;
+        }
+
+        /* Ensure hero content stays above the background image */
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content {
@@ -399,6 +429,7 @@
             .grid { gap: 12px; }
             .grid-overlay h4 { font-size: 0.85rem; }
             .grid-overlay p { font-size: 0.6rem; }
+            .hero-section::before { opacity: 0.28; } /* slightly lighter on small screens */
         }
     </style>
 </head>
@@ -428,7 +459,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with nerdspace.png background (elegant overlay) -->
     <section id="home" class="hero-section">
         <div class="container">
             <div class="hero-content">
