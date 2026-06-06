@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cesar's tech portfolio – AI projects, business sites, games, and creative experiments.">
     <title>NerdSpace | Cesar's Tech Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -145,7 +146,7 @@
 
         .mobile-dropdown a:hover { background: var(--badge-bg); }
 
-        /* Hero Section — with nerdspace.png background overlay */
+        /* Hero Section */
         .hero-section {
             position: relative;
             background: var(--hero-bg);
@@ -155,7 +156,6 @@
             overflow: hidden;
         }
 
-        /* Background image: nerdspace.png with soft transparency */
         .hero-section::before {
             content: '';
             position: absolute;
@@ -302,6 +302,13 @@
 
         .grid-item:hover .grid-overlay { opacity: 1; }
 
+        /* On touch devices, overlay stays visible so users can see titles & buttons */
+        @media (hover: none) {
+            .grid-overlay {
+                opacity: 1;
+            }
+        }
+
         .grid-overlay h4 {
             font-family: 'Playfair Display', serif;
             font-size: 1rem;
@@ -338,6 +345,8 @@
             border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 500;
+            display: inline-block;
+            cursor: default;
         }
 
         /* Footer */
@@ -414,6 +423,11 @@
             color: white;
         }
 
+        /* Scroll margin for fixed header */
+        #home, #all-projects {
+            scroll-margin-top: 80px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -459,7 +473,6 @@
         </div>
     </header>
 
-    <!-- Hero Section with nerdspace.png background -->
     <section id="home" class="hero-section">
         <div class="container">
             <div class="hero-content">
@@ -467,151 +480,149 @@
                 <p>A professional thinker with a collection of projects :)</p>
                 <div class="hero-buttons">
                     <a href="#all-projects" class="cta-button">Explore Work</a>
-                    <a href="https://cr-about-me.vercel.app" target="_blank" class="cta-button secondary-button">About Me</a>
+                    <a href="https://cr-about-me.vercel.app" target="_blank" rel="noopener noreferrer" class="cta-button secondary-button">About Me</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Grid -->
     <section id="all-projects" class="section">
         <div class="container">
             <h2 class="section-title">All Projects</h2>
             
-            <!-- 1. Business -->
+            <!-- Business -->
             <div class="category">
                 <h3><i class="fas fa-briefcase" style="margin-right: 8px;"></i> Business</h3>
                 <div class="grid">
-                    <div class="grid-item" style="background-image: url('Me.png');">
+                    <div class="grid-item" style="background-image: url('Me.png');" aria-label="Portfolio project">
                         <div class="grid-overlay">
                             <h4>Portfolio</h4>
                             <p>About me & experience</p>
-                            <a href="https://cr-about-me.vercel.app" target="_blank" class="project-link">Visit</a>
+                            <a href="https://cr-about-me.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Visit</a>
                         </div>
                     </div>
-                    <div class="grid-item" style="background-image: url('chatbot.png');">
+                    <div class="grid-item" style="background-image: url('chatbot.png');" aria-label="Resume Assistant project">
                         <div class="grid-overlay">
                             <h4>Resume Assistant</h4>
                             <p>AI chatbot for CVs</p>
-                            <a href="https://resume-assistant-chatbot.vercel.app" target="_blank" class="project-link">Visit</a>
+                            <a href="https://resume-assistant-chatbot.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Visit</a>
                         </div>
                     </div>
-                    <div class="grid-item" style="background-image: url('Swift2.png');">
+                    <div class="grid-item" style="background-image: url('Swift2.png');" aria-label="SwiftSite project">
                         <div class="grid-overlay">
                             <h4>SwiftSite</h4>
                             <p>Rapid dev startup</p>
-                            <a href="https://swiftsiteonline.vercel.app" target="_blank" class="project-link">Visit</a>
+                            <a href="https://swiftsiteonline.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Visit</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 2. AI Models -->
+            <!-- AI Models -->
             <div class="category">
                 <h3><i class="fas fa-microchip" style="margin-right: 8px;"></i> AI Models</h3>
                 <div class="grid">
-                    <div class="grid-item" style="background-image: url('patch.png');">
+                    <div class="grid-item" style="background-image: url('patch.png');" aria-label="PATCH AI project">
                         <div class="grid-overlay">
                             <h4>PATCH AI</h4>
                             <p>Lightweight console</p>
-                            <a href="https://patch-ai-nerdspace-cr.vercel.app" target="_blank" class="project-link">Visit</a>
+                            <a href="https://patch-ai-nerdspace-cr.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Visit</a>
                         </div>
                     </div>
-                    <div class="grid-item" style="background-image: url('neo.png');">
+                    <div class="grid-item" style="background-image: url('neo.png');" aria-label="NEO AI project">
                         <div class="grid-overlay">
                             <h4>NEO AI</h4>
                             <p>Multi‑model orchestration</p>
-                            <a href="https://neo-ai-nerdspace-cr.vercel.app" target="_blank" class="project-link">Visit</a>
+                            <a href="https://neo-ai-nerdspace-cr.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Visit</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. Ventures (including Black Widow Inks with background image) -->
+            <!-- Ventures -->
             <div class="category">
                 <h3><i class="fas fa-lightbulb" style="margin-right: 8px;"></i> Ventures</h3>
                 <div class="grid">
-                    <div class="grid-item" style="background-image: url('nati2.png');">
+                    <div class="grid-item" style="background-image: url('nati2.png');" aria-label="Nati Nails project">
                         <div class="grid-overlay">
                             <h4>Nati Nails</h4>
                             <p>Salon startup</p>
-                            <a href="https://natinails.vercel.app" target="_blank" class="project-link">Visit</a>
+                            <a href="https://natinails.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Visit</a>
                         </div>
                     </div>
-                    <div class="grid-item" style="background-image: url('Call me.png');">
+                    <div class="grid-item" style="background-image: url('Call me.png');" aria-label="Cold2Close project">
                         <div class="grid-overlay">
                             <h4>Cold2Close</h4>
                             <p>AI cold calling</p>
-                            <a href="https://cold-2-close.vercel.app" target="_blank" class="project-link">Visit</a>
+                            <a href="https://cold-2-close.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Visit</a>
                         </div>
                     </div>
-                    <div class="grid-item" style="background-image: url('artisan.png');">
+                    <div class="grid-item" style="background-image: url('artisan.png');" aria-label="Artisan Gems project">
                         <div class="grid-overlay">
                             <h4>Artisan Gems</h4>
                             <p>Jewelry website</p>
-                            <a href="https://artisan-gems-the-woodlands-tx.vercel.app" target="_blank" class="project-link">Visit</a>
+                            <a href="https://artisan-gems-the-woodlands-tx.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Visit</a>
                         </div>
                     </div>
-                    <!-- Black Widow Inks: background image 'blackwidowinksss.png' -->
-                    <div class="grid-item" style="background-image: url('blackwidowinksss.png'); background-size: cover; background-position: center;">
+                    <div class="grid-item" style="background-image: url('blackwidowinksss.png'); background-size: cover; background-position: center;" aria-label="Black Widow Inks project">
                         <div class="grid-overlay">
                             <i class="fas fa-droplet" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
                             <h4>Black Widow Inks</h4>
                             <p>Tattoo studio & custom designs</p>
-                            <a href="https://black-widow-inks.vercel.app" target="_blank" class="project-link">Visit</a>
+                            <a href="https://black-widow-inks.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Visit</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4. Games (Touch Grass: full tile linked) -->
+            <!-- Games -->
             <div class="category">
                 <h3><i class="fas fa-gamepad" style="margin-right: 8px;"></i> Games</h3>
                 <div class="grid">
-                    <div class="grid-item" style="background-image: url('TLH.png');">
+                    <div class="grid-item" style="background-image: url('TLH.png');" aria-label="The Little Hiker game">
                         <div class="grid-overlay">
                             <h4>The Little Hiker</h4>
                             <p>Adventure game</p>
-                            <a href="https://the-little-hiker.vercel.app" target="_blank" class="project-link">Play</a>
+                            <a href="https://the-little-hiker.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Play</a>
                         </div>
                     </div>
-                    <div class="grid-item" style="background-image: url('TLA.png');">
+                    <!-- The Little Astronaut – marked Coming Soon (broken/empty page) -->
+                    <div class="grid-item" style="background-image: url('TLA.png');" aria-label="The Little Astronaut – coming soon">
                         <div class="grid-overlay">
                             <h4>The Little Astronaut</h4>
                             <p>Space exploration</p>
-                            <a href="https://the-little-astronaut.vercel.app" target="_blank" class="project-link">Play</a>
+                            <span class="coming-soon-badge">Coming Soon</span>
                         </div>
                     </div>
-                    <!-- Touch Grass: entire tile links to the game (background image 'touch grass.png') -->
-                    <div id="touchGrassTile" class="grid-item" style="background-image: url('touch grass.png'); background-size: cover; background-position: center; cursor: pointer;">
+                    <!-- Touch Grass – marked Coming Soon (broken/empty) -->
+                    <div class="grid-item" style="background-image: url('touch grass.png'); background-size: cover; background-position: center;" aria-label="Touch Grass – coming soon">
                         <div class="grid-overlay">
                             <i class="fas fa-leaf" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
                             <h4>Touch Grass</h4>
                             <p>Outdoor interactive experience</p>
-                            <a href="https://reyecesa1.github.io/Touch-Grass" target="_blank" class="project-link" id="touchGrassButton">Play</a>
+                            <span class="coming-soon-badge">Coming Soon</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 5. Studies & Others (All Over the Place blog with background image) -->
+            <!-- Studies & Others -->
             <div class="category">
                 <h3><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i> Studies & Others</h3>
                 <div class="grid">
-                    <!-- All Over the Place: background image 'allover.png' -->
-                    <div class="grid-item" style="background-image: url('allover.png'); background-size: cover; background-position: center;">
+                    <div class="grid-item" style="background-image: url('allover.png'); background-size: cover; background-position: center;" aria-label="All Over the Place blog">
                         <div class="grid-overlay">
                             <i class="fas fa-blog" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
                             <h4>All Over the Place</h4>
                             <p>Studies & curious thoughts</p>
-                            <a href="https://reyecesa1.github.io/All-over-the-place" target="_blank" class="project-link">Visit</a>
+                            <a href="https://reyecesa1.github.io/All-over-the-place" target="_blank" rel="noopener noreferrer" class="project-link">Visit</a>
                         </div>
                     </div>
-                    <div class="grid-item" style="background-image: url('NerdSpace.png');">
+                    <div class="grid-item" style="background-image: url('NerdSpace.png');" aria-label="NerdSpace Hub original">
                         <div class="grid-overlay">
                             <h4>NerdSpace Hub</h4>
                             <p>Original hub</p>
-                            <a href="https://nerdspace-hub-cr.vercel.app" target="_blank" class="project-link">Visit</a>
+                            <a href="https://nerdspace-hub-cr.vercel.app" target="_blank" rel="noopener noreferrer" class="project-link">Visit</a>
                         </div>
                     </div>
                 </div>
@@ -619,7 +630,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -627,22 +637,22 @@
                     <h3>NerdSpace</h3>
                     <p>Always creating... — C.</p>
                     <div class="social-links">
-                        <a href="https://github.com/reyecesa1" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/rmcesar.a" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/cre25/" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/reyecesa1" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/rmcesar.a" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/cre25/" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h3>Projects</h3>
                     <ul class="footer-links">
                         <li><a href="#all-projects">All Projects</a></li>
-                        <li><a href="https://github.com/reyecesa1" target="_blank">GitHub</a></li>
+                        <li><a href="https://github.com/reyecesa1" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Connect</h3>
                     <ul class="footer-links">
-                        <li><a href="https://cr-about-me.vercel.app" target="_blank">About Me</a></li>
+                        <li><a href="https://cr-about-me.vercel.app" target="_blank" rel="noopener noreferrer">About Me</a></li>
                         <li><span style="font-size:0.8rem; color:var(--text-light);">Working@midnight.com</span></li>
                     </ul>
                 </div>
@@ -690,13 +700,16 @@
             }
         });
 
-        // Smooth scrolling for anchor links
+        // Smooth scrolling with offset (fixed header)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(targetId);
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const offsetTop = target.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
                     mobileDropdown?.classList.remove('active');
                 }
             });
@@ -720,24 +733,17 @@
             });
         });
 
-        // --------------------------
-        // Make the entire Touch Grass tile clickable (link to the game)
-        // --------------------------
-        const touchGrassTile = document.getElementById('touchGrassTile');
-        const touchGrassButton = document.getElementById('touchGrassButton');
-        const gameUrl = 'https://reyecesa1.github.io/Touch-Grass';
-
-        if (touchGrassTile) {
-            // Click on the whole tile (except the button itself to avoid double event)
-            touchGrassTile.addEventListener('click', (e) => {
-                // If the click target is the button or inside the button, let the button handle it normally.
-                // Otherwise, open the game URL.
-                if (touchGrassButton && (e.target === touchGrassButton || touchGrassButton.contains(e.target))) {
-                    return; // button click will open link natively
-                }
-                window.open(gameUrl, '_blank');
-            });
-        }
+        // Make every tile clickable (opens the project link if it exists)
+        document.querySelectorAll('.grid-item').forEach(tile => {
+            const link = tile.querySelector('.project-link');
+            if (link && link.href) {
+                tile.addEventListener('click', (e) => {
+                    // Don't trigger if clicking inside the link itself (it will handle normally)
+                    if (e.target.closest('.project-link')) return;
+                    window.open(link.href, '_blank');
+                });
+            }
+        });
     </script>
 </body>
 </html>
