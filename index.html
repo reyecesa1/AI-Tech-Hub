@@ -325,6 +325,8 @@
             font-weight: 500;
             text-decoration: none;
             transition: background 0.2s;
+            display: inline-block;
+            pointer-events: auto;
         }
 
         .project-link:hover { background: var(--primary-dark); }
@@ -550,7 +552,7 @@
                             <a href="https://artisan-gems-the-woodlands-tx.vercel.app" target="_blank" class="project-link">Visit</a>
                         </div>
                     </div>
-                    <!-- Black Widow Inks: now with background image 'blackwidowinksss.png' -->
+                    <!-- Black Widow Inks: background image 'blackwidowinksss.png' -->
                     <div class="grid-item" style="background-image: url('blackwidowinksss.png'); background-size: cover; background-position: center;">
                         <div class="grid-overlay">
                             <i class="fas fa-droplet" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
@@ -562,7 +564,7 @@
                 </div>
             </div>
 
-            <!-- 4. Games (including Touch Grass with background image) -->
+            <!-- 4. Games (Touch Grass: full tile linked) -->
             <div class="category">
                 <h3><i class="fas fa-gamepad" style="margin-right: 8px;"></i> Games</h3>
                 <div class="grid">
@@ -580,13 +582,13 @@
                             <a href="https://the-little-astronaut.vercel.app" target="_blank" class="project-link">Play</a>
                         </div>
                     </div>
-                    <!-- Touch Grass: now with background image 'touch grass.png' (filename includes space) -->
-                    <div class="grid-item" style="background-image: url('touch grass.png'); background-size: cover; background-position: center;">
+                    <!-- Touch Grass: entire tile links to the game (background image 'touch grass.png') -->
+                    <div id="touchGrassTile" class="grid-item" style="background-image: url('touch grass.png'); background-size: cover; background-position: center; cursor: pointer;">
                         <div class="grid-overlay">
                             <i class="fas fa-leaf" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
                             <h4>Touch Grass</h4>
                             <p>Outdoor interactive experience</p>
-                            <a href="https://reyecesa1.github.io/Touch-Grass" target="_blank" class="project-link">Play</a>
+                            <a href="https://reyecesa1.github.io/Touch-Grass" target="_blank" class="project-link" id="touchGrassButton">Play</a>
                         </div>
                     </div>
                 </div>
@@ -596,7 +598,7 @@
             <div class="category">
                 <h3><i class="fas fa-graduation-cap" style="margin-right: 8px;"></i> Studies & Others</h3>
                 <div class="grid">
-                    <!-- All Over the Place: now with background image 'allover.png' -->
+                    <!-- All Over the Place: background image 'allover.png' -->
                     <div class="grid-item" style="background-image: url('allover.png'); background-size: cover; background-position: center;">
                         <div class="grid-overlay">
                             <i class="fas fa-blog" style="font-size: 2rem; color: var(--primary); margin-bottom: 8px;"></i>
@@ -717,6 +719,25 @@
                 }
             });
         });
+
+        // --------------------------
+        // Make the entire Touch Grass tile clickable (link to the game)
+        // --------------------------
+        const touchGrassTile = document.getElementById('touchGrassTile');
+        const touchGrassButton = document.getElementById('touchGrassButton');
+        const gameUrl = 'https://reyecesa1.github.io/Touch-Grass';
+
+        if (touchGrassTile) {
+            // Click on the whole tile (except the button itself to avoid double event)
+            touchGrassTile.addEventListener('click', (e) => {
+                // If the click target is the button or inside the button, let the button handle it normally.
+                // Otherwise, open the game URL.
+                if (touchGrassButton && (e.target === touchGrassButton || touchGrassButton.contains(e.target))) {
+                    return; // button click will open link natively
+                }
+                window.open(gameUrl, '_blank');
+            });
+        }
     </script>
 </body>
 </html>
